@@ -1,6 +1,0 @@
-# Read a document list from the database
-{
-	CursorEntries(database:"playground", store:"pinball") {
-		data: value(path:"$")
-	}
-}

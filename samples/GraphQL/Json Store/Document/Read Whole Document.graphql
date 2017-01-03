@@ -1,0 +1,13 @@
+# Read one document from the database and display the system fields
+# along with the whole JSON document
+{
+	Document(unid:"1000", database:"playground", store:"pinball") {
+		_id,
+		_unid,
+		_cdate,
+		_cuser,
+		_mdate,
+		_muser,
+		json: value(path:"$")
+	}
+}

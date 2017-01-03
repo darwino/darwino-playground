@@ -1,4 +1,5 @@
-# Read a document list from the database
+# Start from an owner document, and then read all the pinball
+# documents the user owns
 {
 	CursorDocument(database:"playground", store:"owners") {
     	dn: string(path:"dn"),

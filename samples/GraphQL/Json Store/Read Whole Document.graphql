@@ -1,6 +1,0 @@
-# Read one document from the database
-{
-	Document(unid:"1000", database:"playground", store:"pinball") {
-		data: value(path:"$")
-	}
-}

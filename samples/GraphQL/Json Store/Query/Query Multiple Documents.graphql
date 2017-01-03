@@ -1,4 +1,4 @@
-# Read a document list from the database
+# Read a maximum of 5 document from the database
 {
 	CursorDocuments(database:"playground", store:"pinball", limit:"5") {
 		brand: value(path:"brand"),
