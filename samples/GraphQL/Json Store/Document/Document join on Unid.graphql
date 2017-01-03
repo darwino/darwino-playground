@@ -1,11 +1,11 @@
 # Start from an owner document, and then read all the pinball
 # documents the user owns
 {
-	CursorDocument(database:"playground", store:"owners") {
+	doc: CursorDocument(database:"playground", store:"owners") {
     	dn: string(path:"dn"),
     	firstName: string(path:"firstName"),
     	lastName: string(path:"lastName"),
-		pinballs: objectArray(path:"pinballs") {
+		pinballs: objectArray(path:"pinballs[*]") {
             pinball: Document(unid:"${ipdb}",database:"playground", store:"pinball") {
 				name: string(path:"name"),
 				manufacturer: string(path:"manufacturer"),

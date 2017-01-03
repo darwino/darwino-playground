@@ -1,6 +1,6 @@
 # Read a fixed user by DN
 {
-  User(dn: "cn=al mass,o=darwinoplayground") {
+  user: User(dn: "cn=al mass,o=darwinoplayground") {
     dn,
     cn,
     email,

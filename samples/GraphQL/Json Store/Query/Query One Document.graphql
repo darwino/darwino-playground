@@ -1,7 +1,7 @@
 # Read one single Document from the database
 # Using a cursor allows more complex queries than accessing the doc by unid, although it equires more runtime resources
 {
-	CursorDocument(database:"playground", store:"pinball") {
+	doc: CursorDocument(database:"playground", store:"pinball") {
 		brand: value(path:"brand"),
 		name: value(path:"name"),
 		description: value(path:"description")	

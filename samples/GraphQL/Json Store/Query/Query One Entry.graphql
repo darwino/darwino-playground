@@ -1,7 +1,7 @@
 # Read one single Cursor entry from the database
 # Using a cursor allows more complex queries than accessing the doc by unid, although it equires more runtime resources
 {
-	CursorEntry(database:"playground", store:"pinball", options:"DATA_MODDATES") {
+	entry: CursorEntry(database:"playground", store:"pinball", options:"DATA_MODDATES") {
 		_id,
 		_unid,
 		_cdate,
@@ -13,6 +13,6 @@
 		_isCategory,
 		_categoryCount,
 		_indentLevel,
-		data: value(path:"$")
+		json: value(path:"$")
 	}
 }

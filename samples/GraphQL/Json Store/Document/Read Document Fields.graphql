@@ -1,7 +1,7 @@
 # Read one document from the database and display the system fields
 # along with other fields extracted from the JSON
 {
-	Document(unid:"1000", database:"playground", store:"pinball") {
+	doc: Document(unid:"1000", database:"playground", store:"pinball") {
 		_id,
 		_unid,
 		_cdate,

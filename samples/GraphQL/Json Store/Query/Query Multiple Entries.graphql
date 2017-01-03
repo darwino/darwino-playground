@@ -1,6 +1,6 @@
 # Read a maximum of 5 cursor entries from the database
 {
-	CursorEntries(database:"playground", store:"pinball" limit:"5") {
-		data: value(path:"$")
+	entries: CursorEntries(database:"playground", store:"pinball" limit:"5") {
+		json: value(path:"$")
 	}
 }
