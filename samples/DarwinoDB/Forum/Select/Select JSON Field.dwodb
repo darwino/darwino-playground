@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	query: 		"{author: 'phil17@mymail.com'}",
+	skip:		0,
+	limit:		20
+}

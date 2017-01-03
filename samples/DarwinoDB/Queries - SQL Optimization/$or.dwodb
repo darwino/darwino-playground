@@ -1,0 +1,8 @@
+{
+	database:	"playground",
+	store:		"%{name=store|value=owners}",
+	query: 		"{$or: [{'lastName': {$eq: 'Morales'}},{'lastName': {$eq: 'Avery'}}]}",
+	extract: 	"{lastName: 'lastName',firstName: 'firstName'}",
+	skip:		0,
+	limit:		20
+}

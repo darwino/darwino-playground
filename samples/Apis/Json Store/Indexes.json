@@ -1,0 +1,244 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/documents\/{key}": {
+      "put": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Update Document By Key",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index name",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"key",
+            "description":"Document key as a JSON value",
+            "required":true
+          }
+        ],
+        "description":"Update an existing document "
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/documentexists\/{key}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Check Key Exists",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"key",
+            "description":"Key of the entry as a JSON value (can be an array...)",
+            "required":true
+          }
+        ],
+        "description":"Check if a document exists in an index"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}documents\/{key}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Read Document By Key",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index name",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"key",
+            "description":"Key of the entry as a JSON value",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "format":"int32",
+            "type":"integer",
+            "name":"jsonfields",
+            "description":"Options on the fields to return",
+            "required":false
+          }
+        ],
+        "description":"Read a document from a store"
+      },
+      "delete": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Delete Document By Key",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index name",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"key",
+            "description":"Document key as a JSON value",
+            "required":true
+          }
+        ],
+        "description":"Delete an existing document by key, and return an empty response"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/JSON Store\/Indexes",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

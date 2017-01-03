@@ -1,0 +1,10 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	index:		"byCategory",
+	queryString:"options=DATA_CATONLY",
+	categories:	1,
+	skip:		0,
+	limit:		20
+}

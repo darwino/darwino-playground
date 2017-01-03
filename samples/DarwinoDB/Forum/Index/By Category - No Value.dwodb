@@ -1,0 +1,9 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	index:		"byCategory",
+	queryString:"options=DATA_NOVALUE",
+	skip:		0,
+	limit:		20
+}

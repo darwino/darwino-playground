@@ -1,0 +1,7 @@
+{
+	database:	"playground",
+	store:		"%{name=store|value=owners}",
+	extract:	"{firstName: \"firstName\", lastName: \"lastName\", city: \"city\", state:\"state\"}",
+	skip:		0,
+	limit:		20
+}

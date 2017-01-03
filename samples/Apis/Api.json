@@ -1,0 +1,45 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-discovery\/apis": {
+      "get": {
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          }
+        },
+        "parameters": [
+                    {
+            "enum": [
+              "json",
+              "yaml"
+            ],
+            "in":"query",
+            "type":"string",
+            "name":"format",
+            "description":"Rendering format",
+            "required":false
+          }
+        ],
+        "description":"Get the list of available APIs\n"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"API Description",
+    "version":"0.0.0",
+    "description":"Find the available APIs"
+  }
+}

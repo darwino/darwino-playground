@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	extract: 	"{title: 'title', author: 'author'}",
+	skip:		0,
+	limit:		20
+}

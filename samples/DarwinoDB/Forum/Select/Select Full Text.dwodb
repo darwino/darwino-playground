@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	ftSearch: 	"yellow",
+	skip:		0,
+	limit:		20
+}

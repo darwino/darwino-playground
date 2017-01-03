@@ -1,0 +1,233 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-social\/preferences\/{prefid}": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access current user preferences",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"prefid",
+            "description":"The preference Id",
+            "required":true
+          }
+        ],
+        "description":"Change the current user preferences"
+      },
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access current user preferences",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"prefid",
+            "description":"The preference Id",
+            "required":true
+          }
+        ],
+        "description":"Read preferences of the current user"
+      },
+      "delete": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access current user preferences",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"prefid",
+            "description":"The preference Id",
+            "required":true
+          }
+        ],
+        "description":"Delete the current user preferences"
+      }
+    },
+    "\/$darwino-social\/preferences\/users\/{userid}\/preferences\/{prefid}": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access user preferences",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"userid",
+            "description":"The id of the user. The service implementation might prevent the access to a user that is not the current authenticated user.",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"prefid",
+            "description":"The preference Id",
+            "required":true
+          }
+        ],
+        "description":"Change the user preferences"
+      },
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access user preferences",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"userid",
+            "description":"The id of the user. The service implementation might prevent the access to a user that is not the current authenticated user.",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"prefid",
+            "description":"The preference Id",
+            "required":true
+          }
+        ],
+        "description":"Read preferences for a specific user"
+      },
+      "delete": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access user preferences",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"userid",
+            "description":"The id of the user. The service implementation might prevent the access to a user that is not the current authenticated user.",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"prefid",
+            "description":"The preference Id",
+            "required":true
+          }
+        ],
+        "description":"Delete the user preferences"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"Preferences\/Access Preferences",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

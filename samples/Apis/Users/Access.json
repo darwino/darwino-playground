@@ -1,0 +1,234 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-social\/users\/users\/{userdn}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Retrieve User",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"userdn",
+            "description":"User distinguished name, @me also meaning the current user",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"loginid",
+            "description":"Assume that the userdn is actually a login id, that depends on the directory (email, short name...)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"providers",
+            "description":"List of providers to use, separated by a coma. A empty value means no provider, while the absence of the parameter means all available providers (default)",
+            "required":false
+          }
+        ],
+        "description":"Return the information a user based on its DN"
+      }
+    },
+    "\/$darwino-social\/users\/users": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Retrieve Multiple Users",
+        "parameters": [
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"providers",
+            "description":"List of providers to use, separated by a coma. A empty value means no provider, while the absence of the parameter means all available providers (default)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ids",
+            "description":"Array of ids as a JSON array. It cannot be a simple string with a separator as the ids can contain separators themselves",
+            "required":false
+          }
+        ],
+        "description":"Same than get, except that the ids are passed in the POST body to support large arrays"
+      },
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Retrieve Multiple Users",
+        "parameters": [
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"providers",
+            "description":"List of providers to use, separated by a coma. A empty value means no provider, while the absence of the parameter means all available providers (default)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ids",
+            "description":"Array of ids as a JSON array. It cannot be a simple string with a separator as the ids can contain separators themselves",
+            "required":false
+          }
+        ],
+        "description":"Return information on multiple users at once. The users must be identified by DN, not login id"
+      }
+    },
+    "\/$darwino-social\/users\/users\/{userdn}\/content\/{type}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Retrieve User Content",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"userdn",
+            "description":"User distinguished name, @me also meaning the current user",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"type",
+            "description":"The name of the content to retrieve for this user, like \"photo\" or \"payload\"",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"loginid",
+            "description":"Assume that the userdn is actually a login id, that depends on the directory (email, short name...)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"provider",
+            "description":"Name of the provider to retrieve the content from. An empty value means the main directory",
+            "required":false
+          }
+        ],
+        "description":"Return the typed content for the user"
+      }
+    },
+    "\/$darwino-social\/users\/user": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Retrieve Current User",
+        "parameters": [
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"providers",
+            "description":"List of providers to use, separated by a coma. A empty value means no provider, while the absence of the parameter means all available providers (default)",
+            "required":false
+          }
+        ],
+        "description":"Return information on the current user"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/Users\/User Access",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

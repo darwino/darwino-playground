@@ -1,0 +1,9 @@
+{
+	database:	"playground",
+	store:		"pinball",
+	orderBy:	"@manufacturer",
+	aggregate:	"{ Count: {$count: \"@manufacturer\"}, Sum: {$sum: \"@released\"}, Avg: {$avg: \"@released\"}, Min: {$min: \"@released\"}, Max: {$max: \"@released\"}}",
+	categories:	1,
+	skip:		0,
+	limit:		20
+}

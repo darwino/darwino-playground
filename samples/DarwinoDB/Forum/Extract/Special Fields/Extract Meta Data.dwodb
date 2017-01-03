@@ -1,0 +1,9 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	extract: 	"{database: '_database', store:'_store', id:'_id', unid:'_unid', key:'_key', parentId:'_parentId', value:'_value', _ftRank:'_ftRank', cdate:'cdate', cuser:'_cuser', mdate:'mdate', muser:'_muser',_childrenCount:'_childrenCount'}",
+	queryString: 'options=DATA_MODDATES',
+	skip:		0,
+	limit:		20
+}

@@ -1,0 +1,49 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-mobile\/validate": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "401": {
+            "description":"Unauthorized. Returned when no authenticated user or no userid, email, or key parameter are provided on the request."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Validate User",
+        "description":"Validates the current user and returns some application information"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/Mobile\/Validate",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

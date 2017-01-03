@@ -1,0 +1,2 @@
+-- This query uses the default database
+SELECT $ as doc from pinball

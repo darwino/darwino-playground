@@ -1,0 +1,1478 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/entry": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Query One Entry - Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"orderby",
+            "description":"Order by fields, separated by a coma",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"descending",
+            "description":"Sort using descending order",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorycount",
+            "description":"Category count",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorystart",
+            "description":"Category start",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ftsearch",
+            "description":"Full text search query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"id",
+            "description":"Filter the entries by id",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"unid",
+            "description":"Filter the entries by unid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"parentid",
+            "description":"Filter the entries by parentid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"key",
+            "description":"Filter the entries by key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"partialkey",
+            "description":"Filter the entries by a partial key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"tags",
+            "description":"Filter the entries by tags",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"startkey",
+            "description":"Filter the entries starting from a key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"excludestart",
+            "description":"Exclude the entries exactly matching the start key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"endkey",
+            "description":"Filter the entries up to key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"excludeend",
+            "description":"Exclude the entries matching exactly the end key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"hierarchical",
+            "description":"Indicates that the entries should be returned hierarchically up to a certain level",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"options",
+            "description":"Defines the options used when executing the query:\n1: Insert the category #1\n2: Insert the category #2\n4: Insert the category #3\n8: Insert the category #4\n32: Makes the entry value the document content\n256: returns the read marks as part of the entries\n4096: Calculate the hierarchy manually (not advised)\n8192: Sort the collection by the Full Text rank\n16384: Do not use SQL to filter the entries (not advised)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"query",
+            "description":"JSON query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"extract",
+            "description":"Cursor entry transformation",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"transformer",
+            "description":"Transformation of the resulting JSON document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"jsontree",
+            "description":"Return the response entries as a children property in the JSON resultset.",
+            "required":false
+          }
+        ],
+        "description":"Returns a single entry from a query"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/deleteall": {
+      "delete": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Query Delete Documents - Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"orderby",
+            "description":"Order by fields, separated by a coma",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"descending",
+            "description":"Sort using descending order",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorycount",
+            "description":"Category count",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorystart",
+            "description":"Category start",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ftsearch",
+            "description":"Full text search query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"id",
+            "description":"Filter the entries by id",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"unid",
+            "description":"Filter the entries by unid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"parentid",
+            "description":"Filter the entries by parentid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"key",
+            "description":"Filter the entries by key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"partialkey",
+            "description":"Filter the entries by a partial key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"tags",
+            "description":"Filter the entries by tags",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"startkey",
+            "description":"Filter the entries starting from a key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"excludestart",
+            "description":"Exclude the entries exactly matching the start key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"endkey",
+            "description":"Filter the entries up to key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"excludeend",
+            "description":"Exclude the entries matching exactly the end key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"hierarchical",
+            "description":"Indicates that the entries should be returned hierarchically up to a certain level",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"options",
+            "description":"Defines the options used when executing the query:\n1: Insert the category #1\n2: Insert the category #2\n4: Insert the category #3\n8: Insert the category #4\n32: Makes the entry value the document content\n256: returns the read marks as part of the entries\n4096: Calculate the hierarchy manually (not advised)\n8192: Sort the collection by the Full Text rank\n16384: Do not use SQL to filter the entries (not advised)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"query",
+            "description":"JSON query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"extract",
+            "description":"Cursor entry transformation",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"transformer",
+            "description":"Transformation of the resulting JSON document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"jsontree",
+            "description":"Return the response entries as a children property in the JSON resultset.",
+            "required":false
+          }
+        ],
+        "description":"Delete all documents from a query"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/ids": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Query Document IDs - Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"orderby",
+            "description":"Order by fields, separated by a coma",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"descending",
+            "description":"Sort using descending order",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorycount",
+            "description":"Category count",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorystart",
+            "description":"Category start",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ftsearch",
+            "description":"Full text search query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"id",
+            "description":"Filter the entries by id",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"unid",
+            "description":"Filter the entries by unid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"parentid",
+            "description":"Filter the entries by parentid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"key",
+            "description":"Filter the entries by key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"partialkey",
+            "description":"Filter the entries by a partial key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"tags",
+            "description":"Filter the entries by tags",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"startkey",
+            "description":"Filter the entries starting from a key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"excludestart",
+            "description":"Exclude the entries exactly matching the start key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"endkey",
+            "description":"Filter the entries up to key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"excludeend",
+            "description":"Exclude the entries matching exactly the end key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"hierarchical",
+            "description":"Indicates that the entries should be returned hierarchically up to a certain level",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"options",
+            "description":"Defines the options used when executing the query:\n1: Insert the category #1\n2: Insert the category #2\n4: Insert the category #3\n8: Insert the category #4\n32: Makes the entry value the document content\n256: returns the read marks as part of the entries\n4096: Calculate the hierarchy manually (not advised)\n8192: Sort the collection by the Full Text rank\n16384: Do not use SQL to filter the entries (not advised)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"query",
+            "description":"JSON query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"extract",
+            "description":"Cursor entry transformation",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"transformer",
+            "description":"Transformation of the resulting JSON document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"jsontree",
+            "description":"Return the response entries as a children property in the JSON resultset.",
+            "required":false
+          }
+        ],
+        "description":"Returns a list of document IDs in a store"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/markallread": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Query Mark as Read\/Unread - Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"orderby",
+            "description":"Order by fields, separated by a coma",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"descending",
+            "description":"Sort using descending order",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorycount",
+            "description":"Category count",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorystart",
+            "description":"Category start",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ftsearch",
+            "description":"Full text search query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"id",
+            "description":"Filter the entries by id",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"unid",
+            "description":"Filter the entries by unid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"parentid",
+            "description":"Filter the entries by parentid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"key",
+            "description":"Filter the entries by key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"partialkey",
+            "description":"Filter the entries by a partial key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"tags",
+            "description":"Filter the entries by tags",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"startkey",
+            "description":"Filter the entries starting from a key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"excludestart",
+            "description":"Exclude the entries exactly matching the start key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"endkey",
+            "description":"Filter the entries up to key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"excludeend",
+            "description":"Exclude the entries matching exactly the end key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"hierarchical",
+            "description":"Indicates that the entries should be returned hierarchically up to a certain level",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"options",
+            "description":"Defines the options used when executing the query:\n1: Insert the category #1\n2: Insert the category #2\n4: Insert the category #3\n8: Insert the category #4\n32: Makes the entry value the document content\n256: returns the read marks as part of the entries\n4096: Calculate the hierarchy manually (not advised)\n8192: Sort the collection by the Full Text rank\n16384: Do not use SQL to filter the entries (not advised)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"query",
+            "description":"JSON query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"extract",
+            "description":"Cursor entry transformation",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"transformer",
+            "description":"Transformation of the resulting JSON document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"jsontree",
+            "description":"Return the response entries as a children property in the JSON resultset.",
+            "required":false
+          }
+        ],
+        "description":"Mark all the documents in the collection as read or unread"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/docentries": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Query Document Entries - Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"orderby",
+            "description":"Order by fields, separated by a coma",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"descending",
+            "description":"Sort using descending order",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorycount",
+            "description":"Category count",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorystart",
+            "description":"Category start",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ftsearch",
+            "description":"Full text search query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"id",
+            "description":"Filter the entries by id",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"unid",
+            "description":"Filter the entries by unid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"parentid",
+            "description":"Filter the entries by parentid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"key",
+            "description":"Filter the entries by key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"partialkey",
+            "description":"Filter the entries by a partial key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"tags",
+            "description":"Filter the entries by tags",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"startkey",
+            "description":"Filter the entries starting from a key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"excludestart",
+            "description":"Exclude the entries exactly matching the start key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"endkey",
+            "description":"Filter the entries up to key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"excludeend",
+            "description":"Exclude the entries matching exactly the end key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"hierarchical",
+            "description":"Indicates that the entries should be returned hierarchically up to a certain level",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"options",
+            "description":"Defines the options used when executing the query:\n1: Insert the category #1\n2: Insert the category #2\n4: Insert the category #3\n8: Insert the category #4\n32: Makes the entry value the document content\n256: returns the read marks as part of the entries\n4096: Calculate the hierarchy manually (not advised)\n8192: Sort the collection by the Full Text rank\n16384: Do not use SQL to filter the entries (not advised)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"query",
+            "description":"JSON query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"extract",
+            "description":"Cursor entry transformation",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"transformer",
+            "description":"Transformation of the resulting JSON document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"jsontree",
+            "description":"Return the response entries as a children property in the JSON resultset.",
+            "required":false
+          }
+        ],
+        "description":"Return the list of document from a store"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/count": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Query Count - Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"orderby",
+            "description":"Order by fields, separated by a coma",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"descending",
+            "description":"Sort using descending order",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorycount",
+            "description":"Category count",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorystart",
+            "description":"Category start",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ftsearch",
+            "description":"Full text search query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"id",
+            "description":"Filter the entries by id",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"unid",
+            "description":"Filter the entries by unid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"parentid",
+            "description":"Filter the entries by parentid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"key",
+            "description":"Filter the entries by key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"partialkey",
+            "description":"Filter the entries by a partial key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"tags",
+            "description":"Filter the entries by tags",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"startkey",
+            "description":"Filter the entries starting from a key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"excludestart",
+            "description":"Exclude the entries exactly matching the start key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"endkey",
+            "description":"Filter the entries up to key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"excludeend",
+            "description":"Exclude the entries matching exactly the end key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"hierarchical",
+            "description":"Indicates that the entries should be returned hierarchically up to a certain level",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"options",
+            "description":"Defines the options used when executing the query:\n1: Insert the category #1\n2: Insert the category #2\n4: Insert the category #3\n8: Insert the category #4\n32: Makes the entry value the document content\n256: returns the read marks as part of the entries\n4096: Calculate the hierarchy manually (not advised)\n8192: Sort the collection by the Full Text rank\n16384: Do not use SQL to filter the entries (not advised)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"query",
+            "description":"JSON query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"extract",
+            "description":"Cursor entry transformation",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"transformer",
+            "description":"Transformation of the resulting JSON document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"jsontree",
+            "description":"Return the response entries as a children property in the JSON resultset.",
+            "required":false
+          }
+        ],
+        "description":"Get the number of entries in the index"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/entries": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Query Entries - Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"index_id",
+            "description":"Index ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"orderby",
+            "description":"Order by fields, separated by a coma",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"descending",
+            "description":"Sort using descending order",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorycount",
+            "description":"Category count",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"categorystart",
+            "description":"Category start",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"ftsearch",
+            "description":"Full text search query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"id",
+            "description":"Filter the entries by id",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"unid",
+            "description":"Filter the entries by unid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"parentid",
+            "description":"Filter the entries by parentid",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"key",
+            "description":"Filter the entries by key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"partialkey",
+            "description":"Filter the entries by a partial key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"tags",
+            "description":"Filter the entries by tags",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"startkey",
+            "description":"Filter the entries starting from a key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"excludestart",
+            "description":"Exclude the entries exactly matching the start key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"endkey",
+            "description":"Filter the entries up to key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"excludeend",
+            "description":"Exclude the entries matching exactly the end key",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"hierarchical",
+            "description":"Indicates that the entries should be returned hierarchically up to a certain level",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"options",
+            "description":"Defines the options used when executing the query:\n1: Insert the category #1\n2: Insert the category #2\n4: Insert the category #3\n8: Insert the category #4\n32: Makes the entry value the document content\n256: returns the read marks as part of the entries\n4096: Calculate the hierarchy manually (not advised)\n8192: Sort the collection by the Full Text rank\n16384: Do not use SQL to filter the entries (not advised)",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"query",
+            "description":"JSON query",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"extract",
+            "description":"Cursor entry transformation",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"transformer",
+            "description":"Transformation of the resulting JSON document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"jsontree",
+            "description":"Return the response entries as a children property in the JSON resultset.",
+            "required":false
+          }
+        ],
+        "description":"Return the list of entries in a store"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/JSON Store\/Query\/Index",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

@@ -1,0 +1,10 @@
+# Read one document from the database
+{
+	Document(unid:"1000", database:"playground", store:"pinball") {
+		name: string(path:"name"),
+		manufacturer: string(path:"manufacturer"),
+		released: number(path:"released"),
+		players: long(path:"players"),
+		flippers: int(path:"flippers")
+	}
+}

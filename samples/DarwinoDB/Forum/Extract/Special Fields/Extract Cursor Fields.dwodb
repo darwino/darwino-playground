@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	extract: 	"{position:'_position', hierarchicalLevel:'_hierarchicalLevel', isCategory:'_isCategory', categoryCount:'_categoryCount',indentLevel:'_indentLevel'}",
+	skip:		0,
+	limit:		20
+}

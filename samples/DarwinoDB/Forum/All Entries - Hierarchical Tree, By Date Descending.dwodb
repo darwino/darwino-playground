@@ -1,0 +1,9 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	hierarchies:99,
+	asTree:		true,
+	skip:		0,
+	limit:		20
+}

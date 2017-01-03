@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	queryString:"tags=Ramp,Ball",
+	skip:		0,
+	limit:		20
+}

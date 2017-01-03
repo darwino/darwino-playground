@@ -1,0 +1,18 @@
+# Link on the ipdb 
+{
+	CursorDocuments(database:"playground", store:"owners", limit:"5") {
+    	dn: string(path:"dn"),
+    	firstName: string(path:"firstName"),
+    	lastName: string(path:"lastName"),
+		pinballs: objectArray(path:"pinballs") {
+        	ipdb: string(path:"ipdb")
+            pinball: CursorDocument(query:"{ipdb: '${p0}'}",database:"playground", store:"pinball", p0:"${ipdb}") {
+				name: string(path:"name"),
+				manufacturer: string(path:"manufacturer"),
+				released: number(path:"released"),
+				players: long(path:"players"),
+				flippers: int(path:"flippers")
+            }
+        }
+	}
+}

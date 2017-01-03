@@ -1,0 +1,11 @@
+# Read a fixed user by DN
+{
+  User(dn: "cn=al mass,o=darwinoplayground") {
+    dn,
+    cn,
+    email,
+    dn_attr: string(path:"dn"),
+    cn_attr: string(path:"cn"),
+    email_attr: string(path:"email")
+  }
+}

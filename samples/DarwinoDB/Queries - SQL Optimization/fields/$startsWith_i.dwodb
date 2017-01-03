@@ -1,0 +1,8 @@
+{
+	database:	"playground",
+	store:		"%{name=store|value=owners}",
+	query: 		"{'@lastName': {$startsWith_i: 'A'}}",
+	extract: 	"{lastName: 'lastName'}",
+	skip:		0,
+	limit:		20
+}

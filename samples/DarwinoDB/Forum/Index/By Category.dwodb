@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	index:		"byCategory",
+	skip:		0,
+	limit:		20
+}

@@ -1,0 +1,230 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-jstore\/databases\/{database_id}\/replication\/update": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Send Replication Updates",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"sourceid",
+            "description":"Synchronization source ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "format":"int32",
+            "type":"integer",
+            "name":"committhreshold",
+            "description":"Number of documents to save before committing the transaction and starting a new one",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"profilejson",
+            "description":"Replication profile as a JSON object",
+            "required":true
+          }
+        ],
+        "description":"Push the list of replication changes"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/replication\/listchanges": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Get Synchronization Changes",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"startdate",
+            "description":"Minimum timestamp for the replication changes, as a Java encoded time. 0 or none means all changes.",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"enddate",
+            "description":"Maximum timestamp for the replication changes, as a Java encoded time. 0 or none means all changes.",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"profilejson",
+            "description":"Replication profile as a JSON object",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"repid",
+            "description":"Replication id of the client. All the document with this repid will be skipped, to avoid an unnecessary roundtrip",
+            "required":false
+          }
+        ],
+        "description":"Get  the list of changes"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/replication\/check": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Check Service",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"sourceId",
+            "description":"Source ID for the synchronization",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"profile",
+            "description":"Name of the synchronization profile",
+            "required":false
+          }
+        ],
+        "description":"Check if the synchronization service is available"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/replication\/date": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Get Synchronization Date",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"sourceId",
+            "description":"Source ID for the synchronization",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"profile",
+            "description":"Name of the synchronization profile",
+            "required":false
+          }
+        ],
+        "description":"Get the last synchronization date"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/JSON Store\/Synchronization",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

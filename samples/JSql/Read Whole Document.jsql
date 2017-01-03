@@ -1,0 +1,1 @@
+SELECT $ as doc from playground.pinball

@@ -1,0 +1,491 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-jstore\/databases\/{database_id}\/updateftindex": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Update Full Text Index",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"async",
+            "description":"Indicates if the update should be done synchronously",
+            "required":false
+          }
+        ],
+        "description":"Update the database full text index on demand"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/documentscount": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Documents Count",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          }
+        ],
+        "description":"Return the number of documents in a database"
+      }
+    },
+    "\/$darwino-jstore\/database\/{database_id}\/deploy": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Deploy a Database",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"force",
+            "description":"Force the deployment to this version number",
+            "required":false
+          }
+        ],
+        "description":"Deploy a database to the server - Replace the existing one, if any"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/instances": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"List Instances",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          }
+        ],
+        "description":"Get a list of the available instances for a database"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/reset": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Reset Database",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"instance",
+            "description":"Instance to reset, else will reset the current instance",
+            "required":false
+          }
+        ],
+        "description":"Remove all the documents from the current database instance"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/documentexists\/{id}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Document Exists By Id",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "format":"int32",
+            "type":"integer",
+            "name":"id",
+            "description":"Document ID as an integer value",
+            "required":true
+          }
+        ],
+        "description":"Check is a document exists using its internal id"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Undeploy a Database",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          }
+        ],
+        "description":"Undeploy a database from the server"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/documents\/{id}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Read Document By Id",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "format":"int32",
+            "type":"integer",
+            "name":"id",
+            "description":"Document ID as an integer value",
+            "required":true
+          }
+        ],
+        "description":"Read a document using its internal id"
+      }
+    },
+    "\/$darwino-jstore\/databases": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Database Collection",
+        "parameters": [
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"details",
+            "description":"When true, it returns some database details (label, instances...), else it only returns the database names",
+            "required":false
+          }
+        ],
+        "description":"Returns the list of the available databases"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Index Collection",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"details",
+            "description":"When true, it returns some database details (label, instances...), else it only returns the database names",
+            "required":false
+          }
+        ],
+        "description":"Returns the list of the available index in a store"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Store Collection",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"details",
+            "description":"When true, it returns some database details (label, instances...), else it only returns the database names",
+            "required":false
+          }
+        ],
+        "description":"Returns the list of the available stores in a database"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/documents": {
+      "delete": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Delete All Documents",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "format":"int32",
+            "type":"integer",
+            "name":"options",
+            "description":"Delete options. See constants in Database.java",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"before",
+            "description":"Only delete the document before the date encoded as a long",
+            "required":false
+          }
+        ],
+        "description":"Delete all the documents in a database"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/JSON Store\/Databases",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

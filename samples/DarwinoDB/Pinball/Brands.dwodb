@@ -1,0 +1,9 @@
+{
+	database:	"playground",
+	store:		"pinball",
+	orderBy:	"@manufacturer",
+	extractDoc:	false,
+	categories:	1,
+	skip:		0,
+	limit:		20
+}

@@ -1,0 +1,8 @@
+# Read a document list from the database
+{
+	CursorDocuments(database:"playground", store:"pinball", limit:"5") {
+		brand: value(path:"brand"),
+		name: value(path:"name"),
+		description: value(path:"description")
+	}
+}

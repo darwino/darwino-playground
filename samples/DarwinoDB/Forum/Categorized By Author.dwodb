@@ -1,0 +1,9 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	orderBy: 	"author",
+	categories:	1,
+	skip:		0,
+	limit:		20
+}

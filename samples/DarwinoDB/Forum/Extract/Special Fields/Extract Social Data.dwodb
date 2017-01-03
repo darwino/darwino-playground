@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	extract: 	"{shared:'_shared',shareCount:'_shareCount',rate:'_rate',rateAvg:'_rateAvg',rateSum:'_rateSum',read:'_read',readCount:'_readCount'}",
+	skip:		0,
+	limit:		20
+}

@@ -1,0 +1,10 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	orderBy: 	"_cdate a",
+	categories:	1,
+	extractDoc:	false,
+	skip:		0,
+	limit:		20
+}

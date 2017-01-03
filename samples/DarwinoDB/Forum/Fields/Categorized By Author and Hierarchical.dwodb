@@ -1,0 +1,11 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	orderBy: 	"@author",
+	categories:	1,
+	hierarchies:99,
+	asTree:		true,
+	skip:		0,
+	limit:		20
+}

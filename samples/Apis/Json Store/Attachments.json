@@ -1,0 +1,406 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-jstore\/design\/{database_id}\/{design_name}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Read Design Element Content",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"design_name",
+            "description":"Name of the design element",
+            "required":true
+          }
+        ],
+        "description":"Read a design element attachment. This is equivalent of reading the attachment 'content' from the store '_design'"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documents\/{unid}\/attachments": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Get Attachments List",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          }
+        ],
+        "description":"Get the list of attachments of a document"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documents\/{unid}\/attachments\/{attachment_name}": {
+      "head": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access Attachments",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"attachment_name",
+            "description":"Attachment name",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"encode",
+            "description":"Used to encode the result as base 64 if the parameter value is 'base64'. Else, the attachment will be returned as binary",
+            "required":false
+          }
+        ],
+        "description":"Check if the attachment exists"
+      },
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access Attachments",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"attachment_name",
+            "description":"Attachment name",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"encode",
+            "description":"Used to encode the result as base 64 if the parameter value is 'base64'. Else, the attachment will be returned as binary",
+            "required":false
+          }
+        ],
+        "description":"Create a new attachment, if it does not exist in the document"
+      },
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access Attachments",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"attachment_name",
+            "description":"Attachment name",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"encode",
+            "description":"Used to encode the result as base 64 if the parameter value is 'base64'. Else, the attachment will be returned as binary",
+            "required":false
+          }
+        ],
+        "description":"Read a document attachment content"
+      },
+      "delete": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access Attachments",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"attachment_name",
+            "description":"Attachment name",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"encode",
+            "description":"Used to encode the result as base 64 if the parameter value is 'base64'. Else, the attachment will be returned as binary",
+            "required":false
+          }
+        ],
+        "description":"Delete an existing attachment in the document"
+      },
+      "put": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Access Attachments",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"attachment_name",
+            "description":"Attachment name",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"encode",
+            "description":"Used to encode the result as base 64 if the parameter value is 'base64'. Else, the attachment will be returned as binary",
+            "required":false
+          }
+        ],
+        "description":"Update an existing attachment in the document"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/JSON Store\/Document Attachments",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

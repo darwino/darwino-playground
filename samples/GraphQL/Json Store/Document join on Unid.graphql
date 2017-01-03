@@ -1,0 +1,17 @@
+# Read a document list from the database
+{
+	CursorDocument(database:"playground", store:"owners") {
+    	dn: string(path:"dn"),
+    	firstName: string(path:"firstName"),
+    	lastName: string(path:"lastName"),
+		pinballs: objectArray(path:"pinballs") {
+            pinball: Document(unid:"${ipdb}",database:"playground", store:"pinball") {
+				name: string(path:"name"),
+				manufacturer: string(path:"manufacturer"),
+				released: number(path:"released"),
+				players: long(path:"players"),
+				flippers: int(path:"flippers")
+            }
+        }
+	}
+}

@@ -1,0 +1,82 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-social\/users": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Service Information",
+        "description":"Get information on the user service"
+      }
+    },
+    "\/$darwino-social\/users\/images\/{resource}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Stock Images",
+        "parameters": [
+                    {
+            "enum": [
+              "anonymous-photo.png"
+            ],
+            "in":"path",
+            "type":"string",
+            "name":"resource",
+            "description":"Name of the resource, like the anonymous photo",
+            "required":true
+          }
+        ],
+        "description":"Return stock images used by consumers, like the anonymous photo"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"Users\/Misc",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

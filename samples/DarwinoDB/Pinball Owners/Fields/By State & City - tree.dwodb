@@ -1,0 +1,9 @@
+{
+	database:	"playground",
+	store:		"%{name=store|value=owners}",
+	orderBy:	"@state, @city",
+	categories:	2,
+	asTree:		true,
+	skip:		0,
+	limit:		20
+}

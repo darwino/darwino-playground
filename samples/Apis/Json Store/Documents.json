@@ -1,0 +1,384 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/childrencount\/{unid}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Children Count",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          }
+        ],
+        "description":"Return the count of the children of a document by UNID."
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/syncslaves\/{unid}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Slave List",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          }
+        ],
+        "description":"Return the list of the slaves of a document by UNID."
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documentexists\/{unid}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Check Document Exists",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          }
+        ],
+        "description":"Check if a document exists by UNID"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documents\/{unid}\/social": {
+      "post": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Set Social Data",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"user",
+            "description":"User ID for the social data. An empty ID means the current user.",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"number",
+            "name":"rate",
+            "description":"Rate value for the document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"share",
+            "description":"Share (true) or unshare (false) the document",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"boolean",
+            "name":"read",
+            "description":"Mark the document as read (true) or unread (false)",
+            "required":false
+          }
+        ],
+        "description":"Set the document social data by UNID"
+      },
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Read Social Data",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"user",
+            "description":"User ID for the social data. An empty ID means the current user.",
+            "required":false
+          }
+        ],
+        "description":"Access the social data of a document by UNID"
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documentdeleted\/{unid}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Check Document Deleted",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          }
+        ],
+        "description":"Check if a document is deleted by UNID."
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/children\/{unid}": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Children List",
+        "parameters": [
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"database_id",
+            "description":"Database ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"store_id",
+            "description":"Store ID",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "type":"string",
+            "name":"unid",
+            "description":"Document UNID or ID if prefixed by id:",
+            "required":true
+          }
+        ],
+        "description":"Return the list of the children of a document by UNID."
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/JSON Store\/Document",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}

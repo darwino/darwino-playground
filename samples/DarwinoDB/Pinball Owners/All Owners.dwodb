@@ -1,0 +1,6 @@
+{
+	database:	"playground",
+	store:		"%{name=store|value=owners}",
+	skip:		0,
+	limit:		20
+}

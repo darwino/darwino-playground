@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"forum",
+	orderBy: 	"_cdate a",
+	skip:		0,
+	limit:		20
+}
