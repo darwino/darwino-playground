@@ -1,0 +1,7 @@
+# Read user properties by DN
+{
+  preferences: Preferences(user:"user1") {
+    attr1: string(path:"pref1"),
+    attr2: string(path:"pref2")
+  }
+}

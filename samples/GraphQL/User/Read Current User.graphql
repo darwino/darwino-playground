@@ -1,0 +1,9 @@
+# Read a fixed user by DN
+{
+  # Current user is identified by @me
+  user1: User(dn: "@me") {
+    dn,
+    cn,
+    email,
+  }
+}

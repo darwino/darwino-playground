@@ -1,0 +1,7 @@
+# Read current user properties
+{
+  preferences: Preferences(user:"@me") {
+    attr1: string(path:"pref1"),
+    attr2: string(path:"pref2")
+  }
+}
