@@ -1,0 +1,2 @@
+-- This query uses an explicit database name
+SELECT $ as doc from playground.pinball

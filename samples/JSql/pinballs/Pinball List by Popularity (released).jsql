@@ -1,0 +1,5 @@
+-- NULLS LAST is required on POSTGRESQL, else the NULL values are coming first
+
+SELECT $.released::number as count, $.manufacturer as manufacturer, $.name as name 
+	FROM playground.pinball
+	ORDER BY $.released::number DESC NULLS LAST

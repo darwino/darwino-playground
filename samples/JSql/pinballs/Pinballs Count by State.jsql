@@ -1,0 +1,5 @@
+SELECT O.$.state state, count(*)
+	FROM owners O
+	LEFT OUTER JOIN owns R ON R.$.owner=O._unid
+	GROUP BY O.$.state
+	ORDER BY state

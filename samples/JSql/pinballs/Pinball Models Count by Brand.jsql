@@ -1,0 +1,4 @@
+SELECT $.manufacturer as manufacturer, COUNT(*) 
+	FROM pinball
+	GROUP BY manufacturer
+	ORDER BY COUNT(*) DESC

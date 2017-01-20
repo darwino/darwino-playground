@@ -1,4 +1,3 @@
 -- Select the fields using Json Path and assign a name to each column
 SELECT $.name as name, $.brand as brand
-	from playground.pinball T
-	ORDER BY T.$.name
+	from pinball

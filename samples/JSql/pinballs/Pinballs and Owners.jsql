@@ -1,0 +1,8 @@
+SELECT O.$.firstName firstname, 
+	   O.$.lastName lastname,
+	   P.$.brand brand,
+	   P.$.name name
+	FROM owners O
+		LEFT OUTER JOIN owns R ON R.$.owner=O._unid
+		LEFT OUTER JOIN pinball P ON R.$.ipdb=P._unid
+	ORDER BY firstname, lastname
