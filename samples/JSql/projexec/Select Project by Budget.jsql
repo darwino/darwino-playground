@@ -1,2 +1,0 @@
-SELECT $.id as id, $.financial.budget as budget from tg_pe_project.pe_project 
-	where "$.financial.budget.value"::number>1000
