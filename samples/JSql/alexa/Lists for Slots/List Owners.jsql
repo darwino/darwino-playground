@@ -1,0 +1,3 @@
+SELECT $.fullName as name
+	FROM owners
+	ORDER BY name

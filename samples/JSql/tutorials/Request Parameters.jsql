@@ -1,0 +1,6 @@
+-- Parameters can be used with the syntax :xxxx
+-- In the playground, the parameter values can be set by using the following syntax as a comment
+--  params={lname:'Tinov'}
+SELECT $ as doc 
+	FROM owners
+	WHERE $.lastName=:lname

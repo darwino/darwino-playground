@@ -1,0 +1,3 @@
+SELECT $.manufacturer as manufacturer
+	FROM pinball
+	ORDER BY manufacturer

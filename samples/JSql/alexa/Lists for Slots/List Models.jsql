@@ -1,0 +1,3 @@
+SELECT $.name as name
+	FROM pinball
+	ORDER BY name
