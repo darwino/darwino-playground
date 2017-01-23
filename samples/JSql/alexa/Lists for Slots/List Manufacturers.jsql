@@ -1,3 +1,3 @@
-SELECT $.manufacturer as manufacturer
+SELECT DISTINCT $.manufacturer as manufacturer
 	FROM pinball
 	ORDER BY manufacturer

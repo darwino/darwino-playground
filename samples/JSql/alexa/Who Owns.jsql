@@ -1,9 +1,9 @@
--- params={model:'Doctor Who'}
+-- params={model:'Revenge From Mars'}
 
 SELECT O.$.fullName owner, 
 	   P.$.name name
 	FROM owners O
 		LEFT OUTER JOIN owns R ON R.$.owner=O._unid
 		LEFT OUTER JOIN pinball P ON R.$.ipdb=P._unid
-	WHERE P.$.name=:model -- 'Doctor Who'
+	WHERE P.$.name=:model
 	ORDER BY owner
