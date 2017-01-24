@@ -1,7 +1,8 @@
-# Read a mximum of 5 pinball owners and link to their User entry in the directory
-# as well as to the pinball documents they own
+# Read a 1 pinball owner and link to their User entry in the directory
+# as well as to the pinball documents he owns
+# (we only read one user because we know that this user has an entry in LDAP!)
 {
-	docs: CursorDocuments(database:"playground", store:"owners", limit:"5") {
+	docs: CursorDocuments(database:"playground", store:"owners", query:"{firstName:'Al'}") {
     	dn: string(path:"dn"),
     	firstName: string(path:"firstName"),
     	lastName: string(path:"lastName"),

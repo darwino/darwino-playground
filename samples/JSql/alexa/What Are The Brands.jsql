@@ -1,0 +1,2 @@
+SELECT DISTINCT P.$.brand brand
+	FROM pinball P

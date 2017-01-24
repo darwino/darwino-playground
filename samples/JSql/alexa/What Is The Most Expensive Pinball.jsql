@@ -1,0 +1,11 @@
+-- Used for: What is the most expensive Pinball?
+SELECT P.$.name name, P.$.manufacturer manufacturer, P."$.value"::number "value"
+	FROM pinball P,
+	(SELECT MAX("$.value"::number) val FROM pinball) MT
+	WHERE P."$.value"::number=MT.val	
+
+-- Other possible query
+-- SELECT P.$.name name, P.$.manufacturer manufacturer, P."$.value"::number "value"
+--	FROM pinball P
+--	ORDER BY "value"::number DESC
+--	LIMIT 1

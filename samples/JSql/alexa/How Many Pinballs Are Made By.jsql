@@ -1,0 +1,6 @@
+-- params={brand:'Data East'}
+
+SELECT count(*)
+	FROM pinball P
+	WHERE P.$.brand=:brand
+	

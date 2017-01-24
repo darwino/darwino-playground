@@ -1,0 +1,3 @@
+SELECT DISTINCT $.brand as brand
+	FROM pinball
+	ORDER BY brand

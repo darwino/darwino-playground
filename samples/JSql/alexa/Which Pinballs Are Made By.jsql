@@ -1,0 +1,6 @@
+-- params={brand:'Bally'}
+
+SELECT P.$.name name, P.$.brand brand
+	FROM pinball P
+	WHERE P.$.brand=:brand
+	
