@@ -1,0 +1,22 @@
+PinballBrandCountIntent How many pinballs are made by {brand}
+PinballBrandCountIntent How many pinball are made by {brand}
+
+PinballCountIntent How many pinballs do you know about
+PinballCountIntent How many pinball machines do you know about
+
+AllBrandsIntent What are the pinball brands
+AllBrandsIntent What are the pinball machine brands
+
+MostExpensivePinballIntent What is the most expensive pinball
+MostExpensivePinballIntent What is the most expensive pinball machine
+
+WhatAreMadeIntent What pinballs are made by {brand}
+WhatAreMadeIntent What pinball machines are made by {brand}
+
+WhoMakesIntent Who makes {model}
+WhoMakesIntent Who makes the pinball {model}
+WhoMakesIntent Who makes the pinball machine {model}
+
+WhoOwnsIntent Who owns {model}
+WhoOwnsIntent Who owns the pinball {model}
+WhoOwnsIntent Who owns the pinball machine {model}

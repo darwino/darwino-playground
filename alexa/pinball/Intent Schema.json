@@ -1,0 +1,49 @@
+{
+  "intents": [
+    {
+      "intent": "PinballBrandCountIntent",
+      "slots": [
+        {
+          "name": "brand",
+          "type": "BRANDS"
+        }
+      ]
+    },
+    {
+      "intent": "PinballCountIntent"
+    },
+    {
+      "intent": "AllBrandsIntent"
+    },
+    {
+      "intent": "MostExpensivePinballIntent"
+    },
+    {
+      "intent": "WhatAreMadeIntent",
+      "slots": [
+        {
+          "name": "brand",
+          "type": "BRANDS"
+        }
+      ]
+    },    
+    {
+      "intent": "WhoMakesIntent",
+      "slots": [
+        {
+          "name": "model",
+          "type": "MODELS"
+        }
+      ]
+    },    
+    {
+      "intent": "WhoOwnsIntent",
+      "slots": [
+        {
+          "name": "model",
+          "type": "MODELS"
+        }
+      ]
+    }    
+  ]
+}
