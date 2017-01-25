@@ -2,5 +2,5 @@
 
 SELECT P.$.brand brand, P.$.name name
 	FROM pinball P
-	WHERE P.$.name=:model
+	WHERE LOWER(P.$.name)=LOWER(:model)
 	
