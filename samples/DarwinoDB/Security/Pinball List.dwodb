@@ -1,0 +1,6 @@
+{
+	database:	"playground_sec",
+	store:		"pinball",
+	skip:		0,
+	limit:		20
+}

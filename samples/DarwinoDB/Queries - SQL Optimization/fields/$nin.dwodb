@@ -1,7 +1,7 @@
 {
 	database:	"playground",
 	store:		"%{name=store|value=owners}",
-	query: 		"{'@lastName': {$nin: ['Morales','Avery', 'Ayers']}}",
+	query: 		"{'@lastName': {$nin: ['Tinov','Mass', 'Collins']}}",
 	extract: 	"{lastName: 'lastName'}",
 	skip:		0,
 	limit:		20

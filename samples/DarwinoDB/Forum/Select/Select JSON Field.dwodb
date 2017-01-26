@@ -2,7 +2,7 @@
 	description: "",
 	database:	"playground",
 	store:		"forum",
-	query: 		"{author: 'phil17@mymail.com'}",
+	query: 		"{author: 'cn=adam tinov,o=darwinoplayground'}",
 	skip:		0,
 	limit:		20
 }

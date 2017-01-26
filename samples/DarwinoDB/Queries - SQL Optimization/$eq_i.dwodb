@@ -1,7 +1,7 @@
 {
 	database:	"playground",
 	store:		"%{name=store|value=owners}",
-	query: 		"{'lastName': {$eq_i: 'MORALES'}}",
+	query: 		"{'lastName': {$eq_i: 'TINOV'}}",
 	extract: 	"{lastName: 'lastName'}",
 	skip:		0,
 	limit:		20

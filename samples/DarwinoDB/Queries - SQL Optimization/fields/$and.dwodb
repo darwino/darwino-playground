@@ -1,7 +1,7 @@
 {
 	database:	"playground",
 	store:		"%{name=store|value=owners}",
-	query: 		"{$and: [{'@lastName': {$eq: 'Morales'}},{'@firstName': {$eq: 'Mark'}}]}",
+	query: 		"{$and: [{'@lastName': {$eq: 'Tinov'}},{'@firstName': {$eq: 'Adam'}}]}",
 	extract: 	"{lastName: 'lastName',firstName: 'firstName'}",
 	skip:		0,
 	limit:		20
