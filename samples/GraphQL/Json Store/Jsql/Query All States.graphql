@@ -1,0 +1,7 @@
+# Read the list of pinballs
+{
+	query: Jsql(sql:"SELECT $.name as name, $.brand as brand from playground.pinball order by brand, name") {
+		brand: string(path:"brand"),
+		name: string(path:"name")
+	}
+}
