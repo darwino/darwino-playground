@@ -1,0 +1,69 @@
+{
+  "securityDefinitions": {
+    "basicAuth": {
+      "type":"basic",
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+    }
+  },
+  "basePath":"\/playground",
+  "host":"playground.darwino.com",
+  "swagger":"2.0",
+  "paths": {
+    "\/$darwino-debug\/profiler": {
+      "get": {
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "produces": [
+          "application\/json"
+        ],
+        "summary":"Profiler Commands",
+        "parameters": [
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"start",
+            "description":"As first parameter, starts the profiler. The value can be empty.",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"stop",
+            "description":"As first parameter, stops the profiler. The value can be empty.",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "type":"string",
+            "name":"reset",
+            "description":"As first parameter, reset the profiler in memory data.  The value can be empty.",
+            "required":false
+          }
+        ],
+        "description":"Sends a command to control the profiler"
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "info": {
+    "title":"\/Debug\/Profiler",
+    "version":"0.0.0",
+    "description":"<add description here>"
+  }
+}
