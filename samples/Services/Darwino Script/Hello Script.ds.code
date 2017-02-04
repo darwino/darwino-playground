@@ -1,0 +1,2 @@
+var m = request.message
+return { message: m, source: 'Darwino Script' }

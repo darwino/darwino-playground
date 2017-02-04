@@ -1,0 +1,2 @@
+var m = request.message
+context.setResponse({ message: m, source: 'JavaScript - Nashorn' })

@@ -1,0 +1,3 @@
+// Sample groovy code returning a JSON Map
+def msg = request.message
+return [message: msg, source: 'Groovy']
