@@ -1,5 +1,3 @@
--- params={model:'Revenge From Mars'}
-
 SELECT P.$.brand brand, P.$.name name
 	FROM pinball P
 	WHERE LOWER(P.$.name)=LOWER(:model)

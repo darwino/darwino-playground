@@ -1,2 +1,2 @@
 var m = request.message
-context.setResponse({ message: m, source: 'JavaScript - Nashorn' })
+service.setResponse({ message: m, source: 'JavaScript - Nashorn' })

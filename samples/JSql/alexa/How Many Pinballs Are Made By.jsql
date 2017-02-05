@@ -1,5 +1,3 @@
--- params={brand:'Data East'}
-
 SELECT count(*)
 	FROM pinball P
 	WHERE LOWER(P.$.brand)=LOWER(:brand)

@@ -1,0 +1,5 @@
+// User
+return { 
+	dn: user.dn,
+	cn: user.cn
+}

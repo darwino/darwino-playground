@@ -1,1 +1,1 @@
-context.setResponse( { message: "Hello World!" } )
+service.setResponse( { message: "Hello World!" } )
