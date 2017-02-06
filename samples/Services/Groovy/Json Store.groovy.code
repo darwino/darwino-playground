@@ -1,0 +1,6 @@
+def database = session.getDatabase('playground')
+def store = database.getStore('pinball');
+return [
+	database: database.id,
+	store: store.id
+]
