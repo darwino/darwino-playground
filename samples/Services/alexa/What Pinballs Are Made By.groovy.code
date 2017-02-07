@@ -1,0 +1,26 @@
+import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
+
+def brand = request.params.brand
+def executor = new JsqlExecutor(session,'playground')
+
+def sql = '''
+SELECT P.$.name name, P.$.brand brand
+	FROM pinball P
+	WHERE LOWER(P.$.brand)=LOWER(:brand)
+'''
+
+def json = executor.findJson(sql,[brand:brand])
+def count = json.size()
+def speechOutput = ''
+if(count>0) {
+  	speechOutput = "$brand is currently making $count pinball machines, like ";
+  	for(def i=0; i<Math.min(3,json.size()); i++) {
+    	speechOutput += json[i].name +', '
+  	}
+  	if(json.size()>3) {
+    	speechOutput += "and more..."
+  	}
+} else {
+  speechOutput = "I don't know any pinball machine made by $brand";
+}
+return [ speech: speechOutput ]

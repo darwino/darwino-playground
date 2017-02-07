@@ -1,0 +1,17 @@
+import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
+
+def executor = new JsqlExecutor(session,'playground')
+
+def sql = '''
+SELECT DISTINCT P.$.brand brand
+	FROM pinball P
+'''
+
+def json = executor.findJson(sql)
+def brands = '';	
+for(def i=0; i<json.size(); i++) {
+	if(i>0) { brands += i==json.size()-1 ? ' and ' : ', '; }
+ 	brands+=json[i].brand
+}
+def speechOutput = "The brands I know about are ${brands}."
+return [ speech: speechOutput ]

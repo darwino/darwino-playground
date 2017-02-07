@@ -1,0 +1,18 @@
+import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
+
+def executor = new JsqlExecutor(session,'playground')
+
+def sql = '''
+SELECT P.$.name name, P.$.manufacturer manufacturer, P.$.value::number "value"
+	FROM pinball P,
+	(SELECT MAX($.value::number) val FROM pinball) MT
+	WHERE P.$.value::number=MT.val	
+'''
+
+def json = executor.findOneJson(sql)
+def name = json.name
+def manufacturer = json.manufacturer
+def price = json.value
+def speechOutput = "The most expensive pinball machine is $name by $manufacturer. It costs $price dollars."
+
+return [ speech: speechOutput ]

@@ -1,0 +1,26 @@
+import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
+
+def model = request.params.model
+def executor = new JsqlExecutor(session,'playground')
+
+def sql = '''
+SELECT O.$.fullName owner, 
+	   P.$.name name
+	FROM owners O
+		LEFT OUTER JOIN owns R ON R.$.owner=O._unid
+		LEFT OUTER JOIN pinball P ON R.$.ipdb=P._unid
+	WHERE LOWER(P.$.name)=LOWER(:model)
+	ORDER BY owner
+'''
+
+def json = executor.findJson(sql,['model':model])
+if(json) {
+	def speechOutput = "$model is owned by "
+    for(def i=0; i<Math.min(3,json.size()); i++) {
+        if(i>0) { speechOutput += i==json.size()-1 ? ' and ' : ','; }
+        speechOutput+=json[i].owner +','
+    }
+	return [ speech: speechOutput ]
+} else {
+	return [speech: "Pinball $model is not available"]
+}
