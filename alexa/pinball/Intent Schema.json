@@ -1,6 +1,12 @@
 {
   "intents": [
     {
+      "intent": "AllBrandsIntent"
+    },
+    {
+      "intent": "MostExpensivePinballIntent"
+    },
+    {
       "intent": "PinballBrandCountIntent",
       "slots": [
         {
@@ -13,13 +19,7 @@
       "intent": "PinballCountIntent"
     },
     {
-      "intent": "AllBrandsIntent"
-    },
-    {
-      "intent": "MostExpensivePinballIntent"
-    },
-    {
-      "intent": "WhatAreMadeIntent",
+      "intent": "WhatPinballsAreMadeBy",
       "slots": [
         {
           "name": "brand",

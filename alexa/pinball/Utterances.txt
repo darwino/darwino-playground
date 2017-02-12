@@ -5,13 +5,13 @@ PinballCountIntent How many pinballs do you know about
 PinballCountIntent How many pinball machines do you know about
 
 AllBrandsIntent What are the pinball brands
-AllBrandsIntent What are the pinball machine brands
+AllBrandsIntent What are the pinball machines brands
 
 MostExpensivePinballIntent What is the most expensive pinball
-MostExpensivePinballIntent What is the most expensive pinball machine
+MostExpensivePinballIntent What is the most expensive pinball  machine
 
-WhatAreMadeIntent What pinballs are made by {brand}
-WhatAreMadeIntent What pinball machines are made by {brand}
+WhatPinballsAreMadeBy What pinballs are made by {brand}
+WhatPinballsAreMadeBy What pinball machines are made by {brand}
 
 WhoMakesIntent Who makes {model}
 WhoMakesIntent Who makes the pinball {model}
