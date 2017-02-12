@@ -1,0 +1,10 @@
+def idx = request.params._index
+
+switch(idx) {
+  case "whatis":
+	return [speech: "Darwino is a top notch application development platform"]
+  case "whomakes":
+	return [speech: "Darwino is made by Darwino incorporated"]
+  default:
+	return [speech: "I don't know about the question "+idx]
+}
