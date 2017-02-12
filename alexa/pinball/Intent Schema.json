@@ -1,8 +1,8 @@
 {
   "intents": [
-    {
-      "intent": "AllBrandsIntent"
-    },
+    {"intent": "BrandIntent_whatis"},
+    {"intent": "BrandIntent_whomakes"},
+    {"intent": "AllBrandsIntent"},
     {
       "intent": "MostExpensivePinballIntent"
     },

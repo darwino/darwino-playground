@@ -1,3 +1,8 @@
+BrandIntent_whatis What is Darwino
+BrandIntent_whatis What is it
+BrandIntent_whomakes Who makes Darwino
+BrandIntent_whomakes Who makes it
+
 PinballBrandCountIntent How many pinballs are made by {brand}
 PinballBrandCountIntent How many pinball are made by {brand}
 
