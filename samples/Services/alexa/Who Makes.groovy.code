@@ -12,7 +12,7 @@ SELECT P.$.brand brand, P.$.name name
 def json = executor.findOneJson(sql,['model':model])
 if(json) {
 	def brand = json.brand;	
-	def speechOutput = "${model} is made by ${brand}."
+	def speechOutput = "${model} is made by ${brand}"
 	return [ speech: speechOutput ]
 } else {
 	return [speech: "I don't know any pinball machine named ${model}"]
