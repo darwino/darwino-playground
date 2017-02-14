@@ -1,0 +1,5 @@
+-- Count the pinball per brand
+SELECT P.$.brand, COUNT(*)
+	FROM playground.pinball P 
+	GROUP BY P.$.brand
+	ORDER BY P.$.brand

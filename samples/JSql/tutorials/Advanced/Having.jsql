@@ -1,0 +1,6 @@
+-- Shows the brands that have more than 10 pinballs
+SELECT P.$.brand, COUNT(*)
+	FROM playground.pinball P 
+	GROUP BY P.$.brand
+	HAVING COUNT(*)>10
+	ORDER BY P.$.brand

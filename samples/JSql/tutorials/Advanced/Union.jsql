@@ -1,0 +1,13 @@
+-- Shows the brands that have more than 10 pinballs
+
+SELECT P.$.brand brand, P.$.name name
+	FROM pinball P 
+	WHERE P.$.brand='Bally'
+
+UNION
+
+SELECT P.$.brand brand, P.$.name name	
+	FROM pinball P 
+	WHERE P.$.brand='Gottlieb'
+
+ORDER BY brand DESC, name
