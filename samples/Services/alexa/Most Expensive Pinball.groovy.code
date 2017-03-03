@@ -1,7 +1,3 @@
-import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
-
-def executor = new JsqlExecutor(session,'playground')
-
 def sql = '''
 SELECT P.$.name name, P.$.manufacturer manufacturer, P.$.value::number "value"
 	FROM pinball P,
@@ -9,7 +5,8 @@ SELECT P.$.name name, P.$.manufacturer manufacturer, P.$.value::number "value"
 	WHERE P.$.value::number=MT.val	
 '''
 
-def json = executor.findOneJson(sql)
+def json = session.openJsqlCursor().database('playground')
+			.query(sql).findOneJson()
 def name = json.name
 def manufacturer = json.manufacturer
 def price = json.value

@@ -1,13 +1,10 @@
-import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
-
-def executor = new JsqlExecutor(session,'playground')
-
 def sql = '''
 SELECT count(*) cnt
 	FROM pinball P
 '''
 
-def json = executor.findOneJson(sql)
+def json = session.openJsqlCursor().database('playground')
+			.query(sql).findOneJson()
 def count = json.cnt
 def speechOutput = "I know about $count different pinball machines."
 return [ speech: speechOutput ]

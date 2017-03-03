@@ -1,7 +1,4 @@
-import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
-
 def model = request.params.model
-def executor = new JsqlExecutor(session,'playground')
 
 def sql = '''
 SELECT P.$.brand brand, P.$.name name
@@ -9,7 +6,8 @@ SELECT P.$.brand brand, P.$.name name
 	WHERE LOWER(P.$.name)=LOWER(:model)
 '''
 
-def json = executor.findOneJson(sql,['model':model])
+def json = session.openJsqlCursor().database('playground')
+			.query(sql).params(['model':model]).findOneJson()
 if(json) {
 	def brand = json.brand;	
 	def speechOutput = "${model} is made by ${brand}"

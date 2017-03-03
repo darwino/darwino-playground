@@ -1,7 +1,4 @@
-import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
-
 def model = request.params.model
-def executor = new JsqlExecutor(session,'playground')
 
 def sql = '''
 SELECT O.$.fullName owner, 
@@ -13,7 +10,8 @@ SELECT O.$.fullName owner,
 	ORDER BY owner
 '''
 
-def json = executor.findJson(sql,['model':model])
+def json = session.openJsqlCursor().database('playground')
+			.query(sql).params(['model':model]).findJson()
 if(json) {
 	def speechOutput = "$model is owned by "
     for(def i=0; i<Math.min(3,json.size()); i++) {

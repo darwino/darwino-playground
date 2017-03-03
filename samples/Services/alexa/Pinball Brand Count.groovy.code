@@ -1,7 +1,4 @@
-import com.darwino.jsonstore.sql.jsql.JsqlExecutor as JsqlExecutor
-
 def brand = request.params.brand
-def executor = new JsqlExecutor(session,'playground')
 
 def sql = '''
 SELECT count(*) cnt
@@ -9,7 +6,8 @@ SELECT count(*) cnt
 	WHERE LOWER(P.$.brand)=LOWER(:brand)
 '''
 
-def json = executor.findOneJson(sql,[brand:brand])
+def json = session.openJsqlCursor().database('playground')
+			.query(sql).params([brand:brand]).findOneJson()
 def count = json.cnt
 def speechOutput = 
   count>0 
