@@ -1,0 +1,8 @@
+{
+	description: "",
+	database:	"playground",
+	store:		"owners",
+	extract: 	"{\n  name: {$atFormula: 'lastName+\" \"+firstName'},\n  sex: {$atFormula: '@if(sexe=\"M\"; \"Male\"; \"Female\")'}\n}",
+	skip:		0,
+	limit:		20
+}
