@@ -1,0 +1,16 @@
+# Read multiple Domino view entries
+{
+	entries: DominoViewEntries(database:"DarwinoReports.nsf", name:"4. Products", limit: 5) {
+		unid,
+		noteId,
+		position,
+		read,
+		siblingCount,
+		descendantCount,
+		childCount,
+		indentLevel,
+		isCategory,
+    	code: string(path:"PRODUCTCODE"),
+    	name: string(path:"PRODUCTNAME"),
+	}
+}

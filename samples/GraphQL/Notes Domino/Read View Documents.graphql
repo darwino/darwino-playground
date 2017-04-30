@@ -1,0 +1,13 @@
+# Read multiple Domino view documents
+{
+	docs: DominoViewDocuments(database:"DarwinoReports.nsf", name:"4. Products", limit: 5) {
+		unid,
+		noteId,
+		parentUnid,
+		created,
+		lastModified,
+		lastAccessed,
+    	code: string(path:"PRODUCTCODE"),
+    	name: string(path:"PRODUCTNAME"),
+	}
+}
