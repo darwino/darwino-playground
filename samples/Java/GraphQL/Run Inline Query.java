@@ -15,7 +15,7 @@ String query =
 +"	}"
 +"}";
 
-GraphQLSession gqlSession = Platform.getService(GraphQLSessionFactory.class).createSession(null);
+GraphQLSession gqlSession = Platform.getService(GraphQLSessionFactory.class).createSession();
 Object result = gqlSession.execute(query);
 
 Object json = result.toString();
