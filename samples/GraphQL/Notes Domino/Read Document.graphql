@@ -1,12 +1,12 @@
 # Read one Domino view entry
 {
 	doc: DominoDocument(database:"DarwinoReports.nsf", unid:"DD2028D6B53ADCCB852581080009C40E") {
-		unid,
-		noteId,
-		parentUnid,
-		created,
-		lastModified,
-		lastAccessed,
+		_unid,
+		_noteId,
+		_parentUnid,
+		_created,
+		_lastModified,
+		_lastAccessed,
     	code: string(path:"PRODUCTCODE"),
     	name: string(path:"PRODUCTNAME"),
 	}

@@ -1,15 +1,15 @@
 # Read one Domino view entry
 {
 	entry: DominoViewEntry(database:"DarwinoReports.nsf", name:"4. Products") {
-		unid,
-		noteId,
-		position,
-		read,
-		siblingCount,
-		descendantCount,
-		childCount,
-		indentLevel,
-		isCategory,
+		_unid,
+		_noteId,
+		_position,
+		_read,
+		_siblingCount,
+		_descendantCount,
+		_childCount,
+		_indentLevel,
+		_isCategory,
     	code: string(path:"PRODUCTCODE"),
     	name: string(path:"PRODUCTNAME"),
 	}
