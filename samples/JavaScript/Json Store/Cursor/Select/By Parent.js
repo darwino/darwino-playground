@@ -10,14 +10,14 @@ var unid = doc.getUnid();
 s += ">>> Select all documents by parent UNID, "+unid+"\n";
 var c = store.openCursor().range(0,5);
 c.parentUnid(unid).find(function(e) {
-  s += "  value:"+darwino.Utils.toJson(e.getValue(),false)+"\n";
+  s += "  value:"+darwino.Utils.toJson(e.getJson(),false)+"\n";
 });  
 s += "\n";
 
 s += ">>> Select all documents using parent document\n";
 var c2 = store.openCursor().range(0,5);
 c2.parent(doc).find(function(e) {
-  s += "  value:"+darwino.Utils.toJson(e.getValue(),false)+"\n";
+  s += "  value:"+darwino.Utils.toJson(e.getJson(),false)+"\n";
 });  
 s += "\n";
 

@@ -5,26 +5,13 @@ String s = ""; final StringBuilder b = new StringBuilder();
 Document doc = store.newDocument(""); doc.save();
 
 // Create comments
-Function.e3<Document,JsonException,Document,String,String> createComment = new Function.e3<Document,JsonException,Document,String,String>() {
-  public Document call(Document parent, String title, String content) throws JsonException {
-  	Document c = store.newDocument();
-    JsonObject o = new JsonObject();
-    o.putString("author","Phil");
-    o.putString("title",title);
-    o.putString("content",content);
-	c.setJson(o);
-  	c.setParent(parent);
-    c.save();
-  	return c;
-  }
-};
+Document c1 = store.newDocument().setParent(doc).setJsonString("{author:'phil', title:'Comment 1', content:'My content #1'}").save();
+Document c11 = store.newDocument().setParent(c1).setJsonString("{author:'phil', title:'Comment 11', content:'My content #1-1'}").save();
+Document c12 = store.newDocument().setParent(c1).setJsonString("{author:'phil', title:'Comment 12', content:'My content #1-2'}").save();
+Document c121 = store.newDocument().setParent(c12).setJsonString("{author:'phil', title:'Comment 121', content:'My content #1-2-1'}").save();
+Document c2 = store.newDocument().setParent(doc).setJsonString("{author:'phil', title:'Comment 2', content:'My content #2'}").save();
+Document c21 = store.newDocument().setParent(c2).setJsonString("{author:'phil', title:'Comment 21', content:'My content #2-1'}").save();
 
-Document c1 = createComment.call(doc,"Comment 1","My content #1");
-Document c11 = createComment.call(c1,"Comment 11","My content #1-1");
-Document c12 = createComment.call(c1,"Comment 12","My content #1-2");
-Document c121 = createComment.call(c12,"Comment 121","My content #1-2-1");
-Document c2 = createComment.call(doc,"Comment 2","My content #2");
-Document c21 = createComment.call(c2,"Comment 21","My content #2-1");
 
 // Search the comment to the just created document
 s += "Direct comments for doc: "+doc.getUnid()+"\n";

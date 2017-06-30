@@ -7,7 +7,7 @@ Cursor c = store.openCursor().extract("{first:'firstName',last:'lastName'}").ran
 b.setLength(0);
 c.find(new CursorHandler() {
   public boolean handle(CursorEntry entry) throws JsonException {  
-  	b.append("  "+JsonJavaFactory.instance.toJson(entry.getValue())+"\n");
+  	b.append("  "+JsonJavaFactory.instance.toJson(entry.getJson())+"\n");
     return true;
   }
 });  

@@ -8,7 +8,7 @@ var c = store.openCursor().range(0,5);
 
 // Select by Key
 c.key("1000").find(function(e) {
-  s += "  value:"+darwino.Utils.toJson(e.getValue(),false)+"\n";
+  s += "  value:"+darwino.Utils.toJson(e.getJson(),false)+"\n";
 });  
 s += "\n";
 

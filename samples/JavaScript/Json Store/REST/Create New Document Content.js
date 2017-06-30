@@ -6,7 +6,7 @@ session.setAsync(false);
 var database = "playground"
 var store = "_default"
 var unid = "" // empty means let the server generate an id
-var url = "$darwino-jstore/databases/"+database+"/stores/"+store+"/documents/"+unid+"/content"
+var url = "$darwino-jstore/databases/"+database+"/stores/"+store+"/documents/"+unid+"/json"
 
 // Content only
 var json = {

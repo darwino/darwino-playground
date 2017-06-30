@@ -1,7 +1,7 @@
 // This snippet shows how to access a document using a REST service
 // Whole document, including the meta-data and attachments, is read.
 
-var database = "pinball"
+var database = "playground"
 var store = "pinball"
 var unid = "1000"
 var url = "$darwino-jstore/databases/"+database+"/stores/"+store+"/documents/"+unid;

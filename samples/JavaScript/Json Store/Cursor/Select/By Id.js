@@ -10,7 +10,7 @@ var id = doc.getDocId();
 
 // Select by Id
 c.id(id).find(function(e) {
-  s += "  value:"+darwino.Utils.toJson(e.getValue(),false)+"\n";
+  s += "  value:"+darwino.Utils.toJson(e.getJson(),false)+"\n";
 });  
 s += "\n";
 

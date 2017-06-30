@@ -6,7 +6,7 @@ Cursor c = store.openCursor().range(0,5);
 b.setLength(0);
 c.key("1000").find(new CursorHandler() {
   public boolean handle(CursorEntry e) throws JsonException {  
-  	b.append("  value:"+e.getValue()+"\n");
+  	b.append("  value:"+e.getJson()+"\n");
     return true;
   }
 });  

@@ -16,7 +16,7 @@ var json = {
   f2:	'field value 2'
 }
 var unid = doc.getUnid();
-var url = "$darwino-jstore/databases/"+database+"/stores/"+store+"/documents/"+unid+"/content"
+var url = "$darwino-jstore/databases/"+database+"/stores/"+store+"/documents/"+unid+"/json"
 
 $.ajax({
   url: url,

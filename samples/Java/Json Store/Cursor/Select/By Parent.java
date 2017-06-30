@@ -11,7 +11,7 @@ Cursor c = store.openCursor().range(0,5);
 b.setLength(0);
 c.parentUnid(unid).find(new CursorHandler() {
   public boolean handle(CursorEntry e) throws JsonException {  
-  	b.append("  value:"+e.getValue()+"\n");
+  	b.append("  value:"+e.getJson()+"\n");
     return true;
   }
 });  
@@ -22,7 +22,7 @@ Cursor c2 = store.openCursor().range(0,5);
 b.setLength(0);
 c2.parent(doc).find(new CursorHandler() {
   public boolean handle(CursorEntry e) throws JsonException {  
-  	b.append("  value:"+e.getValue()+"\n");
+  	b.append("  value:"+e.getJson()+"\n");
     return true;
   }
 });  

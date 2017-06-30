@@ -7,7 +7,7 @@ s += ">>> Select documents showing all hierarchical levels\n";
 var c = store.openCursor().range(0,50);
 
 c.hierarchical(99).find(function(e) {
-  var indent = "                    ".substring(0,e.indentLevel()*2);    
+  var indent = "                    ".substring(0,e.getIndentLevel()*2);    
   s += indent+"title:"+e.getString('title')+"\n";
 });  
 s += "\n";

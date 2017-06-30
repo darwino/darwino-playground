@@ -10,7 +10,7 @@ int id = doc.getDocId();
 
 c.id(id).find(new CursorHandler() {
   public boolean handle(CursorEntry e) throws JsonException {  
-  	b.append("  value:"+e.getValue()+"\n");
+  	b.append("  value:"+e.getJson()+"\n");
     return true;
   }
 });  

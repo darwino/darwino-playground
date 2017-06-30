@@ -3,21 +3,11 @@ Store store2 = session.getDatabase("playground").getStore("temp2");
 String s="";
 
 // Create a few documents
-Function.e2<Document,JsonException,Store,String> createDoc = new Function.e2<Document,JsonException,Store,String>() {
-  public Document call(Store store, String unid) throws JsonException {
-  	Document doc = store.loadDocument(unid,Store.DOCUMENT_CREATE);
-  	if(doc.isNewDocument()) {
-		doc.setJsonString("{field:'My field value'}");
-    	doc.save();
-    }
-  	return doc;
-  }
-};
-Document docMaster = createDoc.call(store1, "PGMaster"); 
-Document docSlave1 = createDoc.call(store1, "PGSlave1");
-Document docSlave2 = createDoc.call(store1, "PGSlave2");
-Document docSlave3 = createDoc.call(store2, "PGSlave3");
-Document docSlave4 = createDoc.call(store2, "PGSlave4");
+Document docMaster = store1.loadDocument("PGParent",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docSlave1 = store1.loadDocument("PGChild1",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docSlave2 = store1.loadDocument("PGChild2",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docSlave3 = store2.loadDocument("PGChild3",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docSlave4 = store2.loadDocument("PGChild4",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
 
 // Make the first doc the master of all the other slave documents
 // The document, or the UNID can be used to assign the master sync

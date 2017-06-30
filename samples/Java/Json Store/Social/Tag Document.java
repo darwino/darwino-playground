@@ -2,24 +2,11 @@ final Store store = session.getDatabase("playground").getStore("tempsocial");
 String s = ""; final StringBuilder b = new StringBuilder();
 
 store.deleteAllDocuments();
+
 // Create a few documents
-Function.e3<Document,JsonException,String,String,String> createDoc = new Function.e3<Document,JsonException,String,String,String>() {
-  public Document call(String unid, String val, String tags) throws JsonException {
-  	Document doc = store.loadDocument(unid,Store.DOCUMENT_CREATE);
-  	if(doc.isNewDocument()) {
-      JsonObject o = new JsonObject();
-      o.putArray("_tags",(JsonArray)JsonJavaFactory.instance.fromJson(tags));
-      o.putString("val",val);
-	  doc.setJson(o);
-      doc.save();
-    }
-    return doc;
-  }
-};
-// Create new documents and tag them
-Document doc1 = createDoc.call("TAG-1","DOC#1","['MA','CA','TX']");
-Document doc2 = createDoc.call("TAG-2","DOC#2","['MA','NH']");
-Document doc3 = createDoc.call("TAG-3","DOC#3","['FL','VT']");
+Document doc1 = store.loadDocument("TAG-1",Store.DOCUMENT_CREATE).setJsonString("{val: 'DOC#1', _tags: ['MA','CA','TX']}").save();
+Document doc2 = store.loadDocument("TAG-2",Store.DOCUMENT_CREATE).setJsonString("{val: 'DOC#2', _tags: ['MA','NH']}").save();
+Document doc3 = store.loadDocument("TAG-3",Store.DOCUMENT_CREATE).setJsonString("{val: 'DOC#3', _tags: ['FL','VT']}").save();
 
 // Search by Tags
 s += "Searching for MA\n";

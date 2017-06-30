@@ -3,21 +3,11 @@ Store store2 = session.getDatabase("playground").getStore("temp2");
 String s="";
 
 // Create a few documents
-Function.e2<Document,JsonException,Store,String> createDoc = new Function.e2<Document,JsonException,Store,String>() {
-  public Document call(Store store, String unid) throws JsonException {
-  	Document doc = store.loadDocument(unid,Store.DOCUMENT_CREATE);
-  	if(doc.isNewDocument()) {
-		doc.setJsonString("{field:'My field value'}");
-    	doc.save();
-    }
-  	return doc;
-  }
-};
-Document docParent = createDoc.call(store1, "PGParent"); 
-Document docChild1 = createDoc.call(store1, "PGChild1");
-Document docChild2 = createDoc.call(store1, "PGChild2");
-Document docChild3 = createDoc.call(store2, "PGChild3");
-Document docChild4 = createDoc.call(store2, "PGChild4");
+Document docParent = store1.loadDocument("PGParent",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docChild1 = store1.loadDocument("PGChild1",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docChild2 = store1.loadDocument("PGChild2",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docChild3 = store2.loadDocument("PGChild3",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
+Document docChild4 = store2.loadDocument("PGChild4",Store.DOCUMENT_CREATE).setJsonString("{field:'My field value'}").save();
 
 // Make the first doc the parent of all the children
 // The document, or the UNID can be used to assign the parent
