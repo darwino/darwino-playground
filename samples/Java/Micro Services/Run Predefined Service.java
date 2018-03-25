@@ -1,6 +1,6 @@
 String query = "Hello World.ds";
 
-JsonMicroServiceSession svcSession = Platform.getService(JsonMicroServiceSessionFactory.class).createSession(null);
+JsonMicroServiceSession svcSession = new JsonMicroServiceSession(Platform.getService(JsonMicroServiceFactory.class));
 Object result = svcSession.executePredefined(query);
 
 Object json = result.toString();
