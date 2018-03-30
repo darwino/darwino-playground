@@ -1,16 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
     "\/$darwino-mobile\/validate": {
       "get": {
+        "summary":"Validate User",
         "security": [
                     {
             "basicAuth": [
@@ -18,6 +11,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Validates the current user and returns some application information",
         "responses": {
           "200": {
             "description":"OK. Indicates that the request was received successfully."
@@ -29,21 +26,27 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Validate User",
-        "description":"Validates the current user and returns some application information"
+        "tags": [
+          "Validate"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"\/Mobile\/Validate",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"Mobile services",
+    "title":"Mobile",
+    "version":"2.1.0"
   }
 }

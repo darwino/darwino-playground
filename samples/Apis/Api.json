@@ -1,16 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
     "\/$darwino-discovery\/apis": {
       "get": {
+        "description":"Get the list of available APIs\n",
         "responses": {
           "200": {
             "description":"Successful response"
@@ -18,28 +11,38 @@
         },
         "parameters": [
                     {
+            "in":"query",
+            "name":"format",
+            "description":"Rendering format",
+            "type":"string",
+            "required":false,
             "enum": [
               "json",
               "yaml"
-            ],
-            "in":"query",
-            "type":"string",
-            "name":"format",
-            "description":"Rendering format",
-            "required":false
+            ]
           }
         ],
-        "description":"Get the list of available APIs\n"
+        "tags": [
+          "API Discovery"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"API Description",
-    "version":"0.0.0",
-    "description":"Find the available APIs"
+    "description":"Discover the available REST APIs",
+    "title":"API Discovery",
+    "version":"2.1.0"
   }
 }

@@ -1,54 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
-    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documentsids": {
-      "get": {
-        "security": [
-                    {
-            "basicAuth": [
-
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description":"OK. Indicates that the request was received successfully."
-          },
-          "404": {
-            "description":"Not found"
-          }
-        },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Document IDs",
-        "parameters": [
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"database_id",
-            "required":true
-          },
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"store_id",
-            "required":true
-          }
-        ],
-        "description":"Return the list of all the documents ID in a store"
-      }
-    },
     "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documentscount": {
       "get": {
+        "summary":"Documents Count",
         "security": [
                     {
             "basicAuth": [
@@ -56,6 +11,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Return the count of documents in a store",
         "responses": {
           "200": {
             "description":"OK. Indicates that the request was received successfully."
@@ -64,29 +23,28 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Documents Count",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
+            "type":"string",
             "required":true
           }
         ],
-        "description":"Return the count of documents in a store"
+        "tags": [
+          "Data Access"
+        ]
       }
     },
     "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/tags": {
       "get": {
+        "summary":"Read Tags",
         "security": [
                     {
             "basicAuth": [
@@ -94,6 +52,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Get the tags list for the store",
         "responses": {
           "200": {
             "description":"OK. Indicates that the request was received successfully."
@@ -102,51 +64,206 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Read Tags",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"query",
-            "type":"number",
             "name":"maxtags",
             "description":"Maximum number of tags to be returned",
+            "type":"number",
             "required":false
           },
                     {
             "in":"query",
-            "type":"boolean",
             "name":"sortbyname",
             "description":"Sort the tags by name",
+            "type":"boolean",
             "required":false
           }
         ],
-        "description":"Get the tags list for the store"
+        "tags": [
+          "Data Access"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documents": {
+      "delete": {
+        "summary":"Delete All Documents",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Delete all the documents in a store. If a list of unids is provided, then only these documents are deleted.",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "name":"options",
+            "format":"int32",
+            "description":"Delete options. See constants in Database.java",
+            "type":"integer",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"unids",
+            "description":"A list of unids to delete, separated by a coma",
+            "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"before",
+            "description":"Only delete the document before the date encoded as a long",
+            "type":"number",
+            "required":false
+          }
+        ],
+        "tags": [
+          "Data Access"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/operation\/{operation_id}": {
+      "get": {
+        "summary":"Run an operation on a set of documents",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Processes either all the documents of a set of documents passed as a JSON array of unids. For now, only the 'delete' operation is available. Return the number of documents being processed",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"operation_id",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Data Access"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documentsids": {
+      "get": {
+        "summary":"Document IDs",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Return the list of all the documents ID in a store",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Data Access"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"\/JSON Store\/Store",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"Access the JSON stores",
+    "title":"JSON Stores",
+    "version":"2.1.0"
   }
 }

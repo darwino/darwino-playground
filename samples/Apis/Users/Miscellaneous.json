@@ -1,40 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
-    "\/$darwino-social\/users": {
-      "get": {
-        "security": [
-                    {
-            "basicAuth": [
-
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description":"Successful response"
-          },
-          "404": {
-            "description":"Not found"
-          }
-        },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Service Information",
-        "description":"Get information on the user service"
-      }
-    },
     "\/$darwino-social\/users\/images\/{resource}": {
       "get": {
+        "summary":"Stock Images",
         "security": [
                     {
             "basicAuth": [
@@ -42,6 +11,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Return stock images used by consumers, like the anonymous photo",
         "responses": {
           "200": {
             "description":"Successful response"
@@ -50,33 +23,66 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Stock Images",
         "parameters": [
                     {
+            "in":"path",
+            "name":"resource",
+            "description":"Name of the resource, like the anonymous photo",
+            "type":"string",
             "enum": [
               "anonymous-photo.png"
             ],
-            "in":"path",
-            "type":"string",
-            "name":"resource",
-            "description":"Name of the resource, like the anonymous photo",
             "required":true
           }
         ],
-        "description":"Return stock images used by consumers, like the anonymous photo"
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "\/$darwino-social\/users": {
+      "get": {
+        "summary":"Service Information",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Get information on the user service",
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"Users\/Misc",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"User APIs",
+    "title":"Misc",
+    "version":"2.1.0"
   }
 }

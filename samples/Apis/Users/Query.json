@@ -1,16 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
     "\/$darwino-social\/users\/typeahead": {
       "get": {
+        "summary":"Type Ahead",
         "security": [
                     {
             "basicAuth": [
@@ -18,6 +11,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Search users based on name selection, for type ahead functions",
         "responses": {
           "200": {
             "description":"Successful response"
@@ -26,61 +23,60 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Type Ahead",
         "parameters": [
                     {
             "in":"query",
-            "type":"string",
             "name":"provider",
             "description":"The name of the provider to delegate the research to. If not available, then it will search the main directory",
+            "type":"string",
             "required":false
           },
                     {
             "in":"query",
-            "type":"string",
             "name":"query",
             "description":"The typeahead query, expressed as a simple search string",
-            "required":false
-          },
-                    {
-            "in":"query",
-            "format":"int32",
-            "type":"integer",
-            "name":"skip",
-            "description":"The number of entries to skip in the result",
-            "required":false
-          },
-                    {
-            "in":"query",
-            "format":"int32",
-            "type":"integer",
-            "name":"limit",
-            "description":"The maximum number of entries to return",
-            "required":false
-          },
-                    {
-            "in":"query",
             "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"skip",
+            "format":"int32",
+            "description":"The number of entries to skip in the result",
+            "type":"integer",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"limit",
+            "format":"int32",
+            "description":"The maximum number of entries to return",
+            "type":"integer",
+            "required":false
+          },
+                    {
+            "in":"query",
             "name":"attributes",
             "description":"A list of attribute names, separated by a coma, to return for each entry. Empty means the default attribute list",
+            "type":"string",
             "required":false
           },
                     {
             "in":"query",
-            "type":"string",
             "name":"options",
             "description":"Specific options for the search, expressed as a JSON object. The available options depend on the directory\/provider",
+            "type":"string",
             "required":false
           }
         ],
-        "description":"Search users based on name selection, for type ahead functions"
+        "tags": [
+          "User Query"
+        ]
       }
     },
     "\/$darwino-social\/users\/query": {
       "get": {
+        "summary":"Search Users",
         "security": [
                     {
             "basicAuth": [
@@ -88,6 +84,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Search users in the directory based on selection formula",
         "responses": {
           "200": {
             "description":"Successful response"
@@ -96,67 +96,73 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Search Users",
         "parameters": [
                     {
             "in":"query",
-            "type":"string",
             "name":"provider",
             "description":"The name of the provider to delegate the research to. If not available, then it will search the main directory",
+            "type":"string",
             "required":false
           },
                     {
             "in":"query",
-            "type":"string",
             "name":"query",
             "description":"The selection query, expressed in a LDAP like query language",
-            "required":false
-          },
-                    {
-            "in":"query",
-            "format":"int32",
-            "type":"integer",
-            "name":"skip",
-            "description":"The number of entries to skip in the result",
-            "required":false
-          },
-                    {
-            "in":"query",
-            "format":"int32",
-            "type":"integer",
-            "name":"limit",
-            "description":"The maximum number of entries to return",
-            "required":false
-          },
-                    {
-            "in":"query",
             "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"skip",
+            "format":"int32",
+            "description":"The number of entries to skip in the result",
+            "type":"integer",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"limit",
+            "format":"int32",
+            "description":"The maximum number of entries to return",
+            "type":"integer",
+            "required":false
+          },
+                    {
+            "in":"query",
             "name":"attributes",
             "description":"A list of attribute names, separated by a coma, to return for each entry. Empty means the default attribute list",
+            "type":"string",
             "required":false
           },
                     {
             "in":"query",
-            "type":"string",
             "name":"options",
             "description":"Specific options for the search, expressed as a JSON object. The available options depend on the directory\/provider",
+            "type":"string",
             "required":false
           }
         ],
-        "description":"Search users in the directory based on selection formula"
+        "tags": [
+          "User Query"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"\/Users\/Query",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"Query the user directories",
+    "title":"User Query",
+    "version":"2.1.0"
   }
 }

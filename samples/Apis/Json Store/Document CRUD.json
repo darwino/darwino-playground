@@ -1,16 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
-    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documents\/{unid}\/content": {
-      "post": {
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documents\/{unid}\/json": {
+      "patch": {
+        "summary":"Update root fields in the document",
         "security": [
                     {
             "basicAuth": [
@@ -18,52 +11,121 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content contains the root fields, with their values, to be updated. A null value means that the field should be deleted from the document. If the document does not exist, then a new document is created.",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Create Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"The UNID of the document. If empty, then a default one will be generated.",
+            "type":"string",
             "required":true
           },
                     {
             "in":"query",
-            "format":"int32",
-            "type":"integer",
             "name":"jsonfields",
+            "format":"int32",
             "description":"Options on the fields to return",
+            "type":"integer",
             "required":false
           }
         ],
-        "description":"The content only contains the JSON document, without the meta-data or the attachment"
+        "tags": [
+          "Document partial updated"
+        ]
+      },
+      "post": {
+        "summary":"Create Document Content",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content only contains the JSON document, without the meta-data or the attachment",
+        "responses": {
+          "200": {
+            "headers": {
+              "x-dwo-jstore-id": {
+                "description":"The internal id of the document",
+                "type":"string"
+              },
+              "x-dwo-jstore-unid": {
+                "description":"The document universal ID",
+                "type":"string"
+              }
+            },
+            "description":"OK. Indicates that the request was processed successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "description":"Store ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"unid",
+            "description":"The UNID of the document. If empty, then a default one will be generated.",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "name":"jsonfields",
+            "format":"int32",
+            "description":"Options on the fields to return",
+            "type":"integer",
+            "required":false
+          }
+        ],
+        "tags": [
+          "Document Content Only"
+        ]
       },
       "get": {
+        "summary":"Read Document Content",
         "security": [
                     {
             "basicAuth": [
@@ -71,52 +133,73 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content only contains the JSON document, without the meta-data or the attachment",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "headers": {
+              "x-dwo-jstore-id": {
+                "description":"The internal id of the document",
+                "type":"string"
+              },
+              "x-dwo-jstore-unid": {
+                "description":"The document universal ID",
+                "type":"string"
+              }
+            },
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Read Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"Document UNID or ID if prefixed by id:",
+            "type":"string",
             "required":true
           },
                     {
             "in":"query",
-            "format":"int32",
-            "type":"integer",
             "name":"jsonfields",
+            "format":"int32",
             "description":"Options on the fields to return",
+            "type":"integer",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"options",
+            "format":"int32",
+            "description":"Options when the document is loaded",
+            "type":"integer",
             "required":false
           }
         ],
-        "description":"The content only contains the JSON document, without the meta-data or the attachment"
+        "tags": [
+          "Document Content Only"
+        ]
       },
       "delete": {
+        "summary":"Delete Document Content",
         "security": [
                     {
             "basicAuth": [
@@ -124,44 +207,47 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The trailing '\/content' has no impact with this method. It is provided for consistency with the other methods.",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Delete Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"Document UNID or ID if prefixed by id:",
+            "type":"string",
             "required":true
           }
         ],
-        "description":"The trailing '\/content' has no impact with this method. It is provided for consistency with the other methods."
+        "tags": [
+          "Document Content Only"
+        ]
       },
       "put": {
+        "summary":"Update Document Content",
         "security": [
                     {
             "basicAuth": [
@@ -169,46 +255,59 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content only contains the JSON document, without the meta-data or the attachment",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "headers": {
+              "x-dwo-jstore-id": {
+                "description":"The internal id of the document",
+                "type":"string"
+              },
+              "x-dwo-jstore-unid": {
+                "description":"The document universal ID",
+                "type":"string"
+              }
+            },
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Update Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"Document UNID or ID if prefixed by id:",
+            "type":"string",
             "required":true
           }
         ],
-        "description":"The content only contains the JSON document, without the meta-data or the attachment"
+        "tags": [
+          "Document Content Only"
+        ]
       }
     },
     "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/newdocument": {
-      "post": {
+      "get": {
+        "summary":"Init Document",
         "security": [
                     {
             "basicAuth": [
@@ -216,39 +315,91 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Initialize a new document after calling the proper event handler (onPostNewDocument) on the server.\r\nThe document is *not* saved in the database, it is just initialized",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Init Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           }
         ],
-        "description":"Initialize a new document after calling the proper event handler (onPostNewDocument) on the server.\r\nThe document is *not* saved in the database, it is just initialized"
+        "tags": [
+          "Document With Meta-Data"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/newdocument\/json": {
+      "get": {
+        "summary":"Init Document",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Initialize a new document after calling the proper event handler (onPostNewDocument) on the server.\r\nThe document is *not* saved in the database, it is just initialized",
+        "responses": {
+          "200": {
+            "headers": {
+              "x-dwo-jstore-unid": {
+                "description":"The document universal ID",
+                "type":"string"
+              }
+            },
+            "description":"OK. Indicates that the request was processed successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "description":"Store ID",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Document Content Only"
+        ]
       }
     },
     "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/documents\/{unid}": {
-      "post": {
+      "patch": {
+        "summary":"Update root fields in the document",
         "security": [
                     {
             "basicAuth": [
@@ -256,52 +407,111 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content contains the root fields, with their values, to be updated. A null value means that the field should be deleted from the document. If the document does not exist, then a new document is created.",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Create Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"The UNID of the document. If empty, then a default one will be generated.",
+            "type":"string",
             "required":true
           },
                     {
             "in":"query",
-            "format":"int32",
-            "type":"integer",
             "name":"jsonfields",
+            "format":"int32",
             "description":"Options on the fields to return",
+            "type":"integer",
             "required":false
           }
         ],
-        "description":"The content should be passed in a field named 'json', while the meta-data and attachments can also be passed this way."
+        "tags": [
+          "Document partial updated"
+        ]
+      },
+      "post": {
+        "summary":"Create Document",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content should be passed in a field named 'json', while the meta-data and attachments can also be passed this way.",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was processed successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "description":"Store ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"unid",
+            "description":"The UNID of the document. If empty, then a default one will be generated.",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "name":"jsonfields",
+            "format":"int32",
+            "description":"Options on the fields to return",
+            "type":"integer",
+            "required":false
+          }
+        ],
+        "tags": [
+          "Document With Meta-Data"
+        ]
       },
       "get": {
+        "summary":"Read Document",
         "security": [
                     {
             "basicAuth": [
@@ -309,52 +519,63 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content should be passed in a field named 'json', while the meta-data and attachments can also be passed this way.",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Read Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"Document UNID or ID if prefixed by id:",
+            "type":"string",
             "required":true
           },
                     {
             "in":"query",
-            "format":"int32",
-            "type":"integer",
             "name":"jsonfields",
+            "format":"int32",
             "description":"Options on the fields to return",
+            "type":"integer",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"options",
+            "format":"int32",
+            "description":"Options when the document is loaded",
+            "type":"integer",
             "required":false
           }
         ],
-        "description":"The content should be passed in a field named 'json', while the meta-data and attachments can also be passed this way."
+        "tags": [
+          "Document With Meta-Data"
+        ]
       },
       "delete": {
+        "summary":"Delete Document",
         "security": [
                     {
             "basicAuth": [
@@ -362,44 +583,47 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Delete an existing document, and return an empty response.",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Delete Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"Document UNID or ID if prefixed by id:",
+            "type":"string",
             "required":true
           }
         ],
-        "description":"Delete an existing document, and return an empty response."
+        "tags": [
+          "Document With Meta-Data"
+        ]
       },
       "put": {
+        "summary":"Update Document",
         "security": [
                     {
             "basicAuth": [
@@ -407,52 +631,62 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"The content should be passed in a field named 'json', while the meta-data and attachments can also be passed this way.\n",
         "responses": {
           "200": {
-            "description":"OK. Indicates that the request was received successfully."
+            "description":"OK. Indicates that the request was processed successfully."
           },
           "404": {
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Update Document",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"unid",
             "description":"Document UNID or ID if prefixed by id:",
+            "type":"string",
             "required":true
           }
         ],
-        "description":"The content should be passed in a field named 'json', while the meta-data and attachments can also be passed this way.\n"
+        "tags": [
+          "Document With Meta-Data"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"\/JSON Store\/Document CRUD",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"List of CRUD operations on JSON documents",
+    "title":"Document CRUD operations",
+    "version":"2.1.0"
   }
 }

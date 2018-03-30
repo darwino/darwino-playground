@@ -1,16 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
     "\/$darwino-jstore": {
       "get": {
+        "summary":"Information",
         "security": [
                     {
             "basicAuth": [
@@ -18,6 +11,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Returns some basic information on the database server",
         "responses": {
           "200": {
             "description":"OK. Indicates that the request was received successfully."
@@ -26,15 +23,14 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Information",
-        "description":"Returns some basic information on the database server"
+        "tags": [
+          "Information"
+        ]
       }
     },
     "\/$darwino-jstore\/user": {
       "get": {
+        "summary":"User",
         "security": [
                     {
             "basicAuth": [
@@ -42,6 +38,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Returns information on the current user.",
         "responses": {
           "200": {
             "description":"OK. Indicates that the request was received successfully."
@@ -50,21 +50,27 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"User",
-        "description":"Returns information on the current user."
+        "tags": [
+          "User"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"\/JSON Store\/Miscellaneous",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"Miscellaneous APIs",
+    "title":"Miscellaneous",
+    "version":"2.1.0"
   }
 }

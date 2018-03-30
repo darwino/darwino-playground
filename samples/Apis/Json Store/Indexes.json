@@ -1,124 +1,9 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
-    }
-  },
   "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
   "paths": {
-    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/documents\/{key}": {
-      "put": {
-        "security": [
-                    {
-            "basicAuth": [
-
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description":"OK. Indicates that the request was received successfully."
-          },
-          "404": {
-            "description":"Not found"
-          }
-        },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Update Document By Key",
-        "parameters": [
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"database_id",
-            "description":"Database ID",
-            "required":true
-          },
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"store_id",
-            "description":"Store ID",
-            "required":true
-          },
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"index_id",
-            "description":"Index name",
-            "required":true
-          },
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"key",
-            "description":"Document key as a JSON value",
-            "required":true
-          }
-        ],
-        "description":"Update an existing document "
-      }
-    },
-    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/documentexists\/{key}": {
-      "get": {
-        "security": [
-                    {
-            "basicAuth": [
-
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description":"OK. Indicates that the request was received successfully."
-          },
-          "404": {
-            "description":"Not found"
-          }
-        },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Check Key Exists",
-        "parameters": [
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"database_id",
-            "description":"Database ID",
-            "required":true
-          },
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"store_id",
-            "description":"Store ID",
-            "required":true
-          },
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"index_id",
-            "description":"Index ID",
-            "required":true
-          },
-                    {
-            "in":"path",
-            "type":"string",
-            "name":"key",
-            "description":"Key of the entry as a JSON value (can be an array...)",
-            "required":true
-          }
-        ],
-        "description":"Check if a document exists in an index"
-      }
-    },
     "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}documents\/{key}": {
       "get": {
+        "summary":"Read Document By Key",
         "security": [
                     {
             "basicAuth": [
@@ -126,6 +11,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Read a document from a store",
         "responses": {
           "200": {
             "description":"OK. Indicates that the request was received successfully."
@@ -134,51 +23,50 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Read Document By Key",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"index_id",
             "description":"Index name",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"key",
             "description":"Key of the entry as a JSON value",
+            "type":"string",
             "required":true
           },
                     {
             "in":"query",
-            "format":"int32",
-            "type":"integer",
             "name":"jsonfields",
+            "format":"int32",
             "description":"Options on the fields to return",
+            "type":"integer",
             "required":false
           }
         ],
-        "description":"Read a document from a store"
+        "tags": [
+          "Data Access"
+        ]
       },
       "delete": {
+        "summary":"Delete Document By Key",
         "security": [
                     {
             "basicAuth": [
@@ -186,6 +74,10 @@
             ]
           }
         ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Delete an existing document by key, and return an empty response",
         "responses": {
           "200": {
             "description":"OK. Indicates that the request was received successfully."
@@ -194,51 +86,171 @@
             "description":"Not found"
           }
         },
-        "produces": [
-          "application\/json"
-        ],
-        "summary":"Delete Document By Key",
         "parameters": [
                     {
             "in":"path",
-            "type":"string",
             "name":"database_id",
             "description":"Database ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"store_id",
             "description":"Store ID",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"index_id",
             "description":"Index name",
+            "type":"string",
             "required":true
           },
                     {
             "in":"path",
-            "type":"string",
             "name":"key",
             "description":"Document key as a JSON value",
+            "type":"string",
             "required":true
           }
         ],
-        "description":"Delete an existing document by key, and return an empty response"
+        "tags": [
+          "Data Access"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/documentexists\/{key}": {
+      "get": {
+        "summary":"Check Key Exists",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Check if a document exists in an index",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "description":"Store ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"index_id",
+            "description":"Index ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"key",
+            "description":"Key of the entry as a JSON value (can be an array...)",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Check Documents"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/stores\/{store_id}\/indexes\/{index_id}\/documents\/{key}": {
+      "put": {
+        "summary":"Update Document By Key",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Update an existing document ",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"store_id",
+            "description":"Store ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"index_id",
+            "description":"Index name",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"key",
+            "description":"Document key as a JSON value",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Data Access"
+        ]
       }
     }
   },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"\/JSON Store\/Indexes",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"Access database indexes",
+    "title":"Indexes",
+    "version":"2.1.0"
   }
 }

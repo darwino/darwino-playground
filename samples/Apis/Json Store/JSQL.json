@@ -1,22 +1,228 @@
 {
-  "securityDefinitions": {
-    "basicAuth": {
-      "type":"basic",
-      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'"
+  "basePath":"\/playground",
+  "paths": {
+    "\/$darwino-jstore\/jsql": {
+      "get": {
+        "summary":"JSQL Query on a session",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Execute the JSQL query. Note that a POST with a JSON payload with the same arguments can also be emitted.",
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"query",
+            "name":"name",
+            "description":"Name of the registered query to load",
+            "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"format",
+            "description":"Format of the result",
+            "type":"list",
+            "enum": [
+              "object",
+              "array",
+              "value",
+              "csv",
+              "text"
+            ],
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"query",
+            "description":"The SQL query",
+            "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "type":"number",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "type":"number",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"params",
+            "description":"List of parameters",
+            "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"metadata",
+            "description":"Include the metada information in the header",
+            "type":"boolean",
+            "required":false
+          }
+        ],
+        "tags": [
+          "JSQL Queries"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/jsql\/list": {
+      "get": {
+        "summary":"List the JSQL queries",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"return the list of registered JSQL queries",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+
+        ],
+        "tags": [
+          "JSQL Queries"
+        ]
+      }
+    },
+    "\/$darwino-jstore\/databases\/{database_id}\/jsql": {
+      "get": {
+        "summary":"JSQL Query on a database",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Execute the JSQL query. Note that a POST with a JSON payload with the same arguments can also be emitted.",
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"query",
+            "name":"name",
+            "description":"Name of the registered query to load",
+            "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"format",
+            "description":"Format of the result",
+            "type":"list",
+            "enum": [
+              "object",
+              "array",
+              "csv",
+              "text"
+            ],
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"query",
+            "description":"The SQL query",
+            "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"skip",
+            "description":"Ignore 'the first 'skip' entries",
+            "type":"number",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"limit",
+            "description":"Limits the number of entries returned",
+            "type":"number",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"params",
+            "description":"List of parameters",
+            "type":"string",
+            "required":false
+          },
+                    {
+            "in":"query",
+            "name":"metadata",
+            "description":"Include the metada information in the header",
+            "type":"boolean",
+            "required":false
+          }
+        ],
+        "tags": [
+          "JSQL Queries"
+        ]
+      }
     }
   },
-  "basePath":"\/playground",
-  "host":"playground.darwino.com",
-  "swagger":"2.0",
-  "paths": {
-  },
+  "host":"localplayground.darwino.com",
   "schemes": [
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "description":"HTTP Basic Authentication. Works over 'HTTP' and 'HTTPS'",
+      "type":"basic"
+    }
+  },
+  "swagger":"2.0",
   "info": {
-    "title":"\/JSON Store\/Jsql",
-    "version":"0.0.0",
-    "description":"<add description here>"
+    "description":"JSQL queries",
+    "title":"JSQL",
+    "version":"2.1.0"
   }
 }
