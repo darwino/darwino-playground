@@ -163,6 +163,6 @@
   "info": {
     "description":"Query the user directories",
     "title":"User Query",
-    "version":"2.1.0"
+    "version":"2.2.0"
   }
 }

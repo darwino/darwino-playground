@@ -251,6 +251,6 @@
   "info": {
     "description":"Access database indexes",
     "title":"Indexes",
-    "version":"2.1.0"
+    "version":"2.2.0"
   }
 }

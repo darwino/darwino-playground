@@ -204,6 +204,100 @@
         ]
       }
     },
+    "\/$darwino-jstore\/databases\/{database_id}\/documents\/{id}\/lock": {
+      "post": {
+        "summary":"Lock a document",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Lock a document by id for the authenticated user",
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"id",
+            "format":"int32",
+            "description":"Document ID as an integer value",
+            "type":"integer",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"delay",
+            "format":"int32",
+            "description":"Optional lock delay in ms",
+            "type":"integer",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Lock"
+        ]
+      },
+      "get": {
+        "summary":"Get document lock",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"Get the information on a document lock",
+        "responses": {
+          "200": {
+            "description":"OK. Indicates that the request was received successfully."
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"id",
+            "format":"int32",
+            "description":"Document ID as an integer value",
+            "type":"integer",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Lock"
+        ]
+      }
+    },
     "\/$darwino-jstore\/databases\/{database_id}\/reset": {
       "post": {
         "summary":"Reset Database",
@@ -515,6 +609,50 @@
         ]
       }
     },
+    "\/$darwino-jstore\/databases\/{database_id}\/documents\/{id}\/unlock": {
+      "post": {
+        "summary":"Unlock a document",
+        "security": [
+                    {
+            "basicAuth": [
+
+            ]
+          }
+        ],
+        "produces": [
+          "application\/json"
+        ],
+        "description":"UnLock a document by id",
+        "responses": {
+          "200": {
+            "description":"Successful response"
+          },
+          "404": {
+            "description":"Not found"
+          }
+        },
+        "parameters": [
+                    {
+            "in":"path",
+            "name":"database_id",
+            "description":"Database ID",
+            "type":"string",
+            "required":true
+          },
+                    {
+            "in":"path",
+            "name":"id",
+            "format":"int32",
+            "description":"Document ID as an integer value",
+            "type":"integer",
+            "required":true
+          }
+        ],
+        "tags": [
+          "Lock"
+        ]
+      }
+    },
     "\/$darwino-jstore\/databases": {
       "get": {
         "summary":"Database Collection",
@@ -567,6 +705,6 @@
   "info": {
     "description":"Access the JSON databases",
     "title":"JSON Databases",
-    "version":"2.1.0"
+    "version":"2.2.0"
   }
 }

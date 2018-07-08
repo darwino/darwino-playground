@@ -107,7 +107,7 @@
                     {
             "in":"path",
             "name":"unid",
-            "description":"The UNID of the document. If empty, then a default one will be generated.",
+            "description":"The UNID of the document. If '*', then a default one will be generated.",
             "type":"string",
             "required":true
           },
@@ -687,6 +687,6 @@
   "info": {
     "description":"List of CRUD operations on JSON documents",
     "title":"Document CRUD operations",
-    "version":"2.1.0"
+    "version":"2.2.0"
   }
 }
